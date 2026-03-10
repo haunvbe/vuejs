@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import KanbanBoard from './kanban/KanbanBoard.vue'
-  import KanbanTooltip from './kanban/KanbanTooltip.vue'
+  import KanbanBoard from '@/kanban/KanbanBoard.vue'
+  import KanbanTooltip from '@/kanban/components/KanbanTooltip.vue'
 </script>
 
 <template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
   import { onMounted, ref } from 'vue'
-  import KanbanColumn from './KanbanColumn.vue'
-  import Sortable from 'sortablejs'
   import { useKanban } from './composables/useKanban'
+  import Sortable from 'sortablejs'
+  import KanbanColumn from './components/KanbanColumn.vue'
+  import KanbanOverlay from './components/KanbanOverlay.vue'
+  import KanbanCandidateForm from './components/KanbanCandidateForm.vue'
 
   const {
     stages
@@ -23,6 +25,9 @@
 </script>
 
 <template>
+  <KanbanOverlay />
+  <KanbanCandidateForm />
+
   <div class="h-screen flex flex-col bg-[#e9f2fee6] px-2">
     <header class="w-full header h-[104px]"></header>
 

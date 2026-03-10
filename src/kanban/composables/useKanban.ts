@@ -5,7 +5,7 @@ const stages = ref([
     id: 1,
     name: 'Ứng tuyển',
     data: [
-      { id: 1, name: 'Nguyễn Văn An', email: 'an.nguyen@candidate.com', phone: '0912000001', position: 'Frontend Developer' },
+      { id: 1, name: 'Nguyễn Văn An', email: 'nva@gmail.com', phone: '09120000011234', position: 'Frontend Developer' },
       { id: 2, name: 'Trần Thị Mai', email: 'mai.tran@candidate.com', phone: '0912000002', position: 'UI/UX Designer' },
       { id: 3, name: 'Lê Minh Hoàng', email: 'hoang.le@candidate.com', phone: '0912000003', position: 'Backend Developer' },
       { id: 4, name: 'Phạm Quang Huy', email: 'huy.pham@candidate.com', phone: '0912000004', position: 'Fullstack Developer' },
@@ -124,8 +124,15 @@ const stages = ref([
   }
 ])
 
+function addCandidate(candidate: { name: string; email: string; phone: string; position: string }) {
+  const newId = Math.max(...stages.value.flatMap(stage => stage.data.map(c => c.id))) + 1
+  const newCandidate = { id: newId, ...candidate }
+  stages.value[0].data.push(newCandidate) // Add to first stage "Ứng tuyển"
+}
+
 export function useKanban() {
   return {
-    stages
+    stages,
+    addCandidate
   }
 }

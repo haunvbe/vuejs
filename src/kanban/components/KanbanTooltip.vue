@@ -1,20 +1,17 @@
 <script setup lang="ts">
-  import { useKanbanTooltip } from './composables/useKanbanTooltip'
+import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
 
-  const { tooltipState } = useKanbanTooltip()
+  const { tooltip } = useKanbanGlobalState()
 </script>
 
 <template>
   <Teleport to="body">
     <div
-      v-if="tooltipState.visible"
+      v-if="tooltip.visible"
       class="kanban-tooltip"
-      :style="{
-        left: tooltipState.x + 'px',
-        top: tooltipState.y + 'px'
-      }"
+      :style="{ left: tooltip.x + 'px', top: tooltip.y + 'px' }"
     >
-      {{ tooltipState.text }}
+      {{ tooltip.text }}
     </div>
   </Teleport>
 </template>

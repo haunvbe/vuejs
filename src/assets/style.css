@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-secondary: #f4f4f5;
+  --color-secondary-light: #f4f4f5cc;
+  --color-secondary-foreground: #e4e4e7;
+  --color-red-200: #ffebeb;
+  --color-red-900: #cb2a2f;
+  --color-amber-200: #fff4d6;
+  --color-amber-900: #a35200;
+  --color-green-200: #ebfaeb;
+  --color-green-900: #297a3a;
+  --color-blue-200: #ebf5ff;
+  --color-blue-900: #0068d6;
+  --color-purple-200: #f9f1fe;
+  --color-purple-900: #7820bc;
+  --color-gray-100: #fafafa;
+  --color-slate-1000: #213547;
+  --color-stone-500: #717171;
+  --color-stone-700: #57606a;
+  --color-stone-light: #18181be6;
+  --color-stone: #18181b;
+}
+
 @layer utilities {
   .transition-colors {
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
@@ -11,6 +33,18 @@
 
   .shadow-sm {
     box-shadow: 0 0 rgb(0, 0, 0), 0 0 rgb(0, 0, 0), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .focus-visible\:default:focus-visible {
+    --tw-ring-color: rgb(161 161 170);
+  }
+
+  .focus-visible\:success:focus-visible {
+    --tw-ring-color: var(--color-green-200);
+  }
+
+  .focus-visible\:error:focus-visible {
+    --tw-ring-color: var(--color-red-200);
   }
 }
 
