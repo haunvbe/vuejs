@@ -41,7 +41,7 @@
           size="w-[32px] h-[32px]"
           color="text-[#505258]"
           bg-color="transparent"
-          hover="hover:bg-[#080f214a]"
+          hover="hover:bg-[#00000029]"
           shadow=""
         >
           <Icon variant="ellipsis" width="14" height="14" />

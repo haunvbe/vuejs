@@ -5,20 +5,9 @@
 </script>
 
 <template>
-  <div v-if="overlay.visible" class="kanban-overlay" @click="hideOverlay"></div>
+  <div
+    v-if="overlay.visible"
+    @click="hideOverlay"
+    class="kanban-overlay fixed top-0 left-0 w-full h-full flex items-center justify-center z-[1000] bg-[rgba(0,0,0,0.15)]">
+  </div>
 </template>
-
-<style scoped>
-.kanban-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-</style>

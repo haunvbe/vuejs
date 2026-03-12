@@ -9,7 +9,7 @@
     focusVisible?: string
     hover?: string
     shadow?: string
-    defaultClassNames?: string
+    align?: string
     type?: 'button' | 'submit' | 'reset'
   }
 
@@ -23,6 +23,7 @@
     focusVisible = 'focus-visible:outline-2 focus-visible:outline-offset-2',
     hover = 'hover:bg-[#1558bc]',
     shadow = 'shadow-sm',
+    align = 'items-center justify-center',
     type = 'button'
   } = defineProps<Button>()
 
@@ -35,7 +36,8 @@
     fontWeight,
     focusVisible,
     hover,
-    shadow
+    shadow,
+    align
   ].join(' ')
 </script>
 
@@ -43,7 +45,7 @@
   <button
     :type
     :class="classNames"
-    class="inline-flex items-center justify-center gap-2 transition-colors disabled:cursor-not-allowed disabled:opacity-90">
+    class="inline-flex gap-2 transition-colors disabled:cursor-not-allowed disabled:opacity-90">
     <slot></slot>
   </button>
 </template>

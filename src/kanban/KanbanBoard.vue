@@ -5,6 +5,8 @@
   import KanbanColumn from './components/KanbanColumn.vue'
   import KanbanOverlay from './components/KanbanOverlay.vue'
   import KanbanCandidateForm from './components/KanbanCandidateForm.vue'
+  import KanbanLoading from './components/KanbanLoading.vue'
+  import KanbanHeader from './components/KanbanHeader.vue'
 
   const {
     stages
@@ -25,13 +27,14 @@
 </script>
 
 <template>
-  <div id="kanban" class="kanban h-screen flex flex-col bg-[#e9f2fee6] px-2">
-    <KanbanOverlay />
-    <KanbanCandidateForm />
+  <div id="kanban" class="kanban h-screen bg-[#e3eefe] flex flex-col">
+    <!-- <KanbanOverlay /> -->
+    <!-- <KanbanCandidateForm /> -->
+    <!-- <KanbanLoading /> -->
 
-    <header class="w-full header h-[104px]"></header>
+    <KanbanHeader />
 
-    <main class="w-full flex-1 overflow-x-auto">
+    <main class="w-full flex-1 overflow-x-auto p-2">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
         <KanbanColumn v-for="stage in stages" :key="stage.id" :stage="stage" />
       </div>
@@ -43,7 +46,12 @@
   .va-dropdown__content {
     border-radius: 8px;
     font-size: 14px;
-    z-index: 10000 !important;
+    z-index: 1050 !important;
+  }
+
+  #kanban,
+  #kanban * {
+    font-family: "Inter", sans-serif !important;
   }
 
   .kanban input::placeholder {

@@ -20,16 +20,8 @@ const overlay = ref<{
 
 const candidateForm = ref<{
   visible: boolean
-  name: string
-  email: string
-  phone: string
-  position: string
 }>({
-  visible: true,
-  name: '',
-  email: '',
-  phone: '',
-  position: ''
+  visible: false
 })
 
 function showTooltip(e: MouseEvent, text: string) {
@@ -60,21 +52,17 @@ function showCandidateForm() {
 
 function hideCandidateForm() {
   candidateForm.value.visible = false
-  candidateForm.value.name = ''
-  candidateForm.value.email = ''
-  candidateForm.value.phone = ''
-  candidateForm.value.position = ''
 }
 
 export function useKanbanGlobalState() {
   return {
     tooltip,
     overlay,
+    candidateForm,
     showTooltip,
     hideTooltip,
     showOverlay,
     hideOverlay,
-    candidateForm,
     showCandidateForm,
     hideCandidateForm
   }

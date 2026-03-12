@@ -8,11 +8,27 @@
   import CloseIcon from './icons/CloseIcon.vue'
   import ArchiveIcon from './icons/ArchiveIcon.vue'
   import AngleDownIcon from './icons/AngleDownIcon.vue'
+  import UserGroupIcon from './icons/UserGroupIcon.vue'
+  import CircleQuestionIcon from './icons/CircleQuestionIcon.vue'
+  import ChartKanbanIcon from './icons/ChartKanbanIcon.vue'
+  import CopyIcon from './icons/CopyIcon.vue'
 
   type Icon = {
     width?: string
     height?: string
-    variant?: 'ellipsis' | 'plus' | 'bars-sort' | 'circle-info' | 'envelope' | 'pen-to-square' | 'close' | 'archive' | 'angle-down'
+    variant?: 'ellipsis'
+    | 'plus'
+    | 'bars-sort'
+    | 'circle-info'
+    | 'envelope'
+    | 'pen-to-square'
+    | 'close'
+    | 'archive'
+    | 'angle-down'
+    | 'user-group'
+    | 'circle-question'
+    | 'chart-kanban'
+    | 'copy'
   }
 
   const {
@@ -32,4 +48,8 @@
   <CloseIcon v-else-if="variant === 'close'" :width :height />
   <ArchiveIcon v-else-if="variant === 'archive'" :width :height />
   <AngleDownIcon v-else-if="variant === 'angle-down'" :width :height />
+  <UserGroupIcon v-else-if="variant === 'user-group'" :width :height />
+  <CircleQuestionIcon v-else-if="variant === 'circle-question'" :width :height />
+  <ChartKanbanIcon v-else-if="variant === 'chart-kanban'" :width :height />
+  <CopyIcon v-else-if="variant === 'copy'" :width :height />
 </template>

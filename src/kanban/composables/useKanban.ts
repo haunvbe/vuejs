@@ -124,15 +124,8 @@ const stages = ref([
   }
 ])
 
-function addCandidate(candidate: { name: string; email: string; phone: string; position: string }) {
-  const newId = Math.max(...stages.value.flatMap(stage => stage.data.map(c => c.id))) + 1
-  const newCandidate = { id: newId, ...candidate }
-  stages.value[0].data.push(newCandidate) // Add to first stage "Ứng tuyển"
-}
-
 export function useKanban() {
   return {
     stages,
-    addCandidate
   }
 }
