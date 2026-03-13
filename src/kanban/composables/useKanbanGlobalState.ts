@@ -12,6 +12,18 @@ const tooltip = ref<{
   visible: false
 })
 
+const menuPopover = ref<{
+  x: number
+  y: number
+  visible: boolean
+  columnId?: string
+}>({
+  x: 0,
+  y: 0,
+  visible: false,
+  columnId: ''
+})
+
 const overlay = ref<{
   visible: boolean
 }>({
@@ -23,6 +35,20 @@ const candidateForm = ref<{
 }>({
   visible: false
 })
+
+function showMenuPopover(e: MouseEvent, columnId?: string) {
+  menuPopover.value.visible = true
+  menuPopover.value.columnId = columnId
+
+  const rect = (e.target as HTMLElement).getBoundingClientRect()
+
+  menuPopover.value.x = rect.left + rect.width
+  menuPopover.value.y = rect.bottom
+}
+
+function hideMenuPopover() {
+  menuPopover.value.visible = false
+}
 
 function showTooltip(e: MouseEvent, text: string) {
   tooltip.value.visible = true
@@ -59,11 +85,14 @@ export function useKanbanGlobalState() {
     tooltip,
     overlay,
     candidateForm,
+    menuPopover,
     showTooltip,
-    hideTooltip,
     showOverlay,
-    hideOverlay,
     showCandidateForm,
-    hideCandidateForm
+    showMenuPopover,
+    hideTooltip,
+    hideOverlay,
+    hideCandidateForm,
+    hideMenuPopover
   }
 }

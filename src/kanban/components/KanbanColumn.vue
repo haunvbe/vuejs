@@ -4,6 +4,7 @@
   import Button from '@/components/Button.vue'
   import Sortable from 'sortablejs'
   import KanbanCard from './KanbanCard.vue'
+  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
 
   const {
     stage
@@ -15,13 +16,20 @@
     }
   }>()
 
+  const kanbanColumnId = `kanbanColumn${stage.id}`
+  const kanbanCardListId = `kanbanCardList${stage.id}`
+  const {
+    showMenuPopover
+  } = useKanbanGlobalState()
+
   onMounted(() => {
-    const el = document.getElementById(`stage${stage.id}`)
+    const el = document.getElementById(kanbanCardListId)
 
     new Sortable(el, {
       animation: 50,
       group: 'shared',
       draggable: '.kanban-card',
+      filter: 'button',
       forceFallback: true,
       fallbackClass: 'kanban-drag-shadow',
       chosenClass: 'kanban-chosen'
@@ -30,10 +38,10 @@
 </script>
 
 <template>
-  <div class="kanban-column w-[284px] shrink-0 h-fit max-h-[calc(100vh-152px)] flex flex-col px-1 py-2 bg-[#f5f5f5] shadow-sm rounded-[12px] border border-[#e5e5e5]">
-    <div class="h-[40px] px-3">
-      <div class="h-[32px] flex items-center">
-        <div class="w-[calc(100%-32px)] text-sm font-semibold text-[#292a2e]">
+  <div :id="kanbanColumnId" class="kanban-column w-[272px] shrink-0 h-fit max-h-[calc(100vh-152px)] px-1 py-2 flex flex-col bg-[#f5f5f5] shadow-sm rounded-[12px] border border-[#e5e5e5]">
+    <div class="h-[40px]">
+      <div class="h-[32px] flex items-center px-1">
+        <div class="kanban-column__stage-name w-[calc(100%-32px)] font-semibold text-sm text-[#292a2e] pl-2 cursor-pointer">
           {{ stage?.name }}
         </div>
 
@@ -43,13 +51,14 @@
           bg-color="transparent"
           hover="hover:bg-[#00000029]"
           shadow=""
+          @click="(e) => showMenuPopover(e, kanbanColumnId)"
         >
           <Icon variant="ellipsis" width="14" height="14" />
         </Button>
       </div>
     </div>
 
-    <div :id="`stage${stage.id}`" class="kanban-scroll flex-1 min-h-0">
+    <div :id="kanbanCardListId" class="kanban-scroll flex-1 min-h-0">
       <KanbanCard v-for="application in stage.data" :key="application?.id" :application />
     </div>
 
@@ -78,6 +87,7 @@
 
   .kanban-chosen {
     position: relative;
+    cursor: grabbing;
   }
 
   .kanban-chosen::after {

@@ -39,11 +39,11 @@
     <div class="p-3">
       <div class="flex items-center justify-center">
         <div class="w-[calc(100%-32px)] space-y-[4px] cursor-pointer">
-          <div class="kanban-card__title max-w-[100%] text-sm font-semibold truncate">
+          <div class="kanban-card__title max-w-[100%] text-sm text-[#292a2e] font-semibold truncate">
             {{ application?.name }}
           </div>
 
-          <div class="kanban-card__subtitle max-w-[100%] inline-flex items-center rounded-md bg-blue-50 px-2 py-[2px] text-xs font-medium text-blue-700 inset-ring inset-ring-blue-700/10">
+          <div class="kanban-card__subtitle max-w-[100%] inline-flex items-center text-xs text-[#505258] font-medium">
             <div>
               <Icon variant="circle-info" width="12" height="12" />
             </div>
@@ -53,7 +53,7 @@
             </div>
           </div>
 
-          <div class="kanban-card__subtitle max-w-[100%] inline-flex items-center rounded-md bg-yellow-50 px-2 py-[2px] text-xs font-medium text-yellow-800 inset-ring inset-ring-yellow-600/20">
+          <div class="kanban-card__subtitle max-w-[100%] inline-flex items-center text-xs text-[#505258]">
             <div>
               <Icon variant="envelope" width="12" height="12" />
             </div>

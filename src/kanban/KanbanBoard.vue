@@ -7,6 +7,8 @@
   import KanbanCandidateForm from './components/KanbanCandidateForm.vue'
   import KanbanLoading from './components/KanbanLoading.vue'
   import KanbanHeader from './components/KanbanHeader.vue'
+  import KanbanTooltip from './components/KanbanTooltip.vue'
+  import KanbanCardMenuPopover from './components/KanbanColumnMenuPopover.vue'
 
   const {
     stages
@@ -18,6 +20,7 @@
     new Sortable(el, {
       animation: 50,
       draggable: '.kanban-column',
+      handle: '.kanban-column__stage-name',
       forceFallback: true,
       fallbackClass: 'kanban-drag-shadow',
       chosenClass: 'kanban-chosen',
@@ -27,10 +30,12 @@
 </script>
 
 <template>
-  <div id="kanban" class="kanban h-screen bg-[#e3eefe] flex flex-col">
+  <div id="kanban" class="kanban bg-white h-screen flex flex-col">
     <!-- <KanbanOverlay /> -->
     <!-- <KanbanCandidateForm /> -->
     <!-- <KanbanLoading /> -->
+    <!-- <KanbanTooltip /> -->
+    <KanbanCardMenuPopover />
 
     <KanbanHeader />
 

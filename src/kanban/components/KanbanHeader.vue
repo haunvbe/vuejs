@@ -9,12 +9,12 @@
   <header class="w-full header h-[104px]">
     <div class="w-full h-[48px] bg-white"></div>
 
-    <div class="w-full h-[56px] bg-[#e9f2fee6] flex items-center px-4">
+    <div class="w-full h-[56px] flex items-center px-4">
       <div class="w-full h-[32px] flex items-center justify-between relative">
         <div class="flex items-center gap-4">
           <Icon variant="chart-kanban" width="14" height="14" />
 
-          <div class="text-[#172b4d] font-black text-base max-w-[400px] truncate">
+          <div class="text-[#172b4d] font-bold text-base max-w-[400px] truncate">
             Middle Software Engineer
           </div>
         </div>
@@ -50,7 +50,7 @@
           </Button>
         </div>
 
-        <KanbanHeaderMenuPopover />
+        <!-- <KanbanHeaderMenuPopover /> -->
       </div>
     </div>
   </header>
