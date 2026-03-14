@@ -12,6 +12,8 @@
   import CircleQuestionIcon from './icons/CircleQuestionIcon.vue'
   import ChartKanbanIcon from './icons/ChartKanbanIcon.vue'
   import CopyIcon from './icons/CopyIcon.vue'
+  import AngleLeft from './icons/AngleLeft.vue'
+  import TrashIcon from './icons/TrashIcon.vue'
 
   type Icon = {
     width?: string
@@ -29,6 +31,8 @@
     | 'circle-question'
     | 'chart-kanban'
     | 'copy'
+    | 'angle-left'
+    | 'trash'
   }
 
   const {
@@ -52,4 +56,6 @@
   <CircleQuestionIcon v-else-if="variant === 'circle-question'" :width :height />
   <ChartKanbanIcon v-else-if="variant === 'chart-kanban'" :width :height />
   <CopyIcon v-else-if="variant === 'copy'" :width :height />
+  <AngleLeft v-else-if="variant === 'angle-left'" :width :height />
+  <TrashIcon v-else-if="variant === 'trash'" :width :height />
 </template>

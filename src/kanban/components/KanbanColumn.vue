@@ -1,10 +1,11 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
+  import { useKanbanColumnMenuPopover } from '../composables/useKanbanColumnMenuPopover'
+  import { useKanbanCandidateForm } from '../composables/useKanbanCandidateForm'
   import Icon from '@/components/Icon.vue'
   import Button from '@/components/Button.vue'
   import Sortable from 'sortablejs'
   import KanbanCard from './KanbanCard.vue'
-  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
 
   const {
     stage
@@ -16,14 +17,13 @@
     }
   }>()
 
-  const kanbanColumnId = `kanbanColumn${stage.id}`
-  const kanbanCardListId = `kanbanCardList${stage.id}`
-  const {
-    showMenuPopover
-  } = useKanbanGlobalState()
+  const columnId = `kanbanColumn${stage.id}`
+  const cardListId = `kanbanCardList${stage.id}`
+  const { showMenuPopover } = useKanbanColumnMenuPopover()
+  const { showCandidateForm } = useKanbanCandidateForm()
 
   onMounted(() => {
-    const el = document.getElementById(kanbanCardListId)
+    const el = document.getElementById(cardListId)
 
     new Sortable(el, {
       animation: 50,
@@ -38,7 +38,7 @@
 </script>
 
 <template>
-  <div :id="kanbanColumnId" class="kanban-column w-[272px] shrink-0 h-fit max-h-[calc(100vh-152px)] px-1 py-2 flex flex-col bg-[#f5f5f5] shadow-sm rounded-[12px] border border-[#e5e5e5]">
+  <div :id="columnId" class="kanban-column w-[272px] shrink-0 h-fit max-h-[calc(100vh-152px)] px-1 py-2 flex flex-col bg-[#f1f2f4] shadow-sm rounded-[12px] border border-[#e5e5e5]">
     <div class="h-[40px]">
       <div class="h-[32px] flex items-center px-1">
         <div class="kanban-column__stage-name w-[calc(100%-32px)] font-semibold text-sm text-[#292a2e] pl-2 cursor-pointer">
@@ -51,19 +51,22 @@
           bg-color="transparent"
           hover="hover:bg-[#00000029]"
           shadow=""
-          @click="(e) => showMenuPopover(e, kanbanColumnId)"
+          @click="showMenuPopover($event, columnId)"
         >
           <Icon variant="ellipsis" width="14" height="14" />
         </Button>
       </div>
     </div>
 
-    <div :id="kanbanCardListId" class="kanban-scroll flex-1 min-h-0">
+    <div :id="cardListId" class="kanban-scroll flex-1 min-h-0">
       <KanbanCard v-for="application in stage.data" :key="application?.id" :application />
     </div>
 
     <div v-if="stage?.name === 'Ứng tuyển'" class="h-[40px] px-3 py-[4px]">
-      <Button class="w-full h-[32px]">
+      <Button
+        class="w-full h-[32px]"
+        @click="showCandidateForm"
+      >
         <Icon variant="plus" width="14" height="14" />
         Thêm ứng viên
       </Button>

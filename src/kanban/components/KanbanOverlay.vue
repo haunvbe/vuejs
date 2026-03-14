@@ -1,7 +1,10 @@
 <script setup lang="ts">
-  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
+  import { useKanbanOverlay } from '../composables/useKanbanOverlay'
 
-  const { overlay, hideOverlay } = useKanbanGlobalState()
+  const {
+    overlay,
+    hideOverlay
+  } = useKanbanOverlay()
 </script>
 
 <template>

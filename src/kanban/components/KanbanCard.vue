@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import Icon from '@/components/Icon.vue'
   import Button from '@/components/Button.vue'
-  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
+  import { useKanbanTooltip } from '../composables/useKanbanTooltip'
 
   const {
     application
@@ -17,7 +17,7 @@
   const {
     showTooltip,
     hideTooltip
-  } = useKanbanGlobalState()
+  } = useKanbanTooltip()
 
 </script>
 
@@ -30,7 +30,7 @@
       hover="hover:bg-[#0b120e24]"
       shadow=""
       class="kanban-card__edit absolute top-1 right-1"
-      @mouseenter="(e) => showTooltip(e, 'Chỉnh sửa thông tin ứng viên')"
+      @mouseenter="showTooltip($event, 'Chỉnh sửa thông tin ứng viên')"
       @mouseleave="hideTooltip"
       >
       <Icon variant="pen-to-square" width="14" height="14" />
@@ -65,11 +65,10 @@
         </div>
 
         <div
-          class="kanban-card__avatar w-[32px] h-[32px] cursor-pointer"
-          @mouseenter="(e) => showTooltip(e, `${application?.name ?? ''} - ${application?.email ?? ''}`)"
+          class="kanban-card__avatar w-[32px] h-[32px] rounded-full bg-red-100 cursor-pointer"
+          @mouseenter="showTooltip($event, `${application?.name ?? ''} - ${application?.email ?? ''}`)"
           @mouseleave="hideTooltip"
         >
-          <img src="https://i.pravatar.cc/300" alt="Avatar" class="rounded-full">
         </div>
       </div>
 

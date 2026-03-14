@@ -39,7 +39,7 @@
           >
             <Icon variant="pen-to-square" width="14" height="14" />
 
-            Chỉnh sửa tin tuyển dụng
+            Sửa tên giai đoạn
           </Button>
         </li>
 

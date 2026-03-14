@@ -1,15 +1,17 @@
-  <script setup lang="ts">
-    import { ref } from 'vue'
-    import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
-    import { useKanban } from '../composables/useKanban'
-    import Button from '@/components/Button.vue'
-    import Icon from '@/components/Icon.vue'
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { useKanbanCandidateForm } from '../composables/useKanbanCandidateForm'
+  import Button from '@/components/Button.vue'
+  import Icon from '@/components/Icon.vue'
 
-    const cv = ref<File[]>([])
-  </script>
+  const {
+    candidateForm,
+    hideCandidateForm
+  } = useKanbanCandidateForm()
+</script>
 
 <template>
-  <div class="kanban-candidate-form flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1010] w-full max-w-[584px] h-[calc(100dvh-128px)] rounded-[12px] bg-white shadow-sm">
+  <div v-if="candidateForm.visible" class="kanban-candidate-form flex flex-col fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1010] w-full max-w-[584px] h-[calc(100dvh-128px)] rounded-[12px] bg-white shadow-sm">
     <header class="min-h-[54px] border-b border-[#0b120e24] flex justify-between items-center px-6">
       <h1 class="text-[#292a2e] font-semibold">
         Thêm ứng viên
@@ -22,6 +24,7 @@
           color="text-[#505258]"
           hover="hover:bg-[#0b120e24]"
           shadow=""
+          @click="hideCandidateForm"
           >
           <Icon width="20" height="20" variant="close" />
         </Button>
@@ -129,7 +132,6 @@
         </div>
 
         <VaFileUpload
-          v-model="cv"
           dropzone
           file-types="jpg,png"
           upload-button-text="Tải tệp tin"
@@ -144,6 +146,7 @@
         color="text-[#505258]"
         hover="hover:bg-[#00000052]"
         class="w-fit h-[32px] me-2"
+        @click="hideCandidateForm"
       >
         Hủy
       </Button>

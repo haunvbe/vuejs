@@ -1,5 +1,12 @@
+<script setup lang="ts">
+  import { useKanbanLoading } from '../composables/useKanbanLoading'
+
+  const { loading } = useKanbanLoading()
+</script>
+
 <template>
-  <div id="kanbanLoading" class="fixed z-[10000] top-0 left-0 w-full h-full flex items-center justify-center bg-[rgba(0,0,0,0.15)]">
+  <!-- bg-[rgba(0,0,0,0.15)] -->
+  <div v-if="loading.visible" id="kanbanLoading" class="fixed z-[10000] top-0 left-0 w-full h-full flex items-center justify-center bg-white">
     <div class="kanban-loading">
       <span></span>
       <span></span>

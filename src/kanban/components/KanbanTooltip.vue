@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
+  import { useKanbanTooltip } from '../composables/useKanbanTooltip'
 
-  const { tooltip } = useKanbanGlobalState()
+  const { tooltip } = useKanbanTooltip()
 </script>
 
 <template>
