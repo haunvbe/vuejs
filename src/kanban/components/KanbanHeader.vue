@@ -2,7 +2,11 @@
   import Button from '@/components/Button.vue'
   import Icon from '@/components/Icon.vue'
   import KanbanHeaderMenuPopover from './KanbanHeaderMenuPopover.vue'
+  import { useKanbanHeaderMenuPopover } from '../composables/useKanbanHeaderMenuPopover'
+  import { useKanbanColumnMenuPopover } from '../composables/useKanbanColumnMenuPopover'
 
+  const headerMenuPopover = useKanbanHeaderMenuPopover()
+  const columnMenuPopover = useKanbanColumnMenuPopover()
 </script>
 
 <template>
@@ -43,14 +47,15 @@
             size="w-[32px] h-[32px]"
             color="text-[#505258]"
             bg-color="transparent"
-            hover="hover:bg-[#00000029]"
+            hover="hover:bg-[#0b120e24]"
             shadow=""
+            @click="headerMenuPopover.showMenuPopover(); columnMenuPopover.hideMenuPopover()"
           >
             <Icon variant="ellipsis" width="14" height="14" />
           </Button>
         </div>
 
-        <!-- <KanbanHeaderMenuPopover /> -->
+        <KanbanHeaderMenuPopover />
       </div>
     </div>
   </header>

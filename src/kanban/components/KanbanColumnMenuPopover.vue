@@ -131,13 +131,31 @@
               Xóa giai đoạn
             </Button>
           </li>
+
+          <li class="flex items-center">
+            <Button
+              size="w-full h-[32px]"
+              color="text-[#080f214a]"
+              bg-color="transparent"
+              align="items-center"
+              font-weight=""
+              class="px-4"
+              hover=""
+              shadow=""
+              rounded=""
+              disabled
+              @click="deleteStage"
+            >
+              Xóa giai đoạn
+            </Button>
+          </li>
         </ul>
       </section>
 
       <section v-else-if="isActionEditStage()">
         <div class="w-[280px] mx-auto text-sm text-[#505258] mt-4">
           <div class="mb-4">
-            <div class="text-sm text-[#505258] font-semibold mb-1">
+            <div class="font-semibold mb-1">
               Tên giai đoạn <span class="text-[#ae2e24]">*</span>
             </div>
 
@@ -151,7 +169,7 @@
           </div>
 
           <div class="mb-4">
-            <div class="text-sm text-[#505258] font-semibold mb-1">
+            <div class="font-semibold mb-1">
               Chọn mẫu email <span class="text-[#ae2e24]">*</span>
             </div>
 
@@ -176,7 +194,7 @@
       <section v-else-if="isActionSetRolePermissions()">
         <div class="w-[280px] mx-auto text-sm text-[#505258] mt-4">
           <div class="mb-4">
-            <div class="text-sm text-[#505258] font-semibold mb-1">
+            <div class="font-semibold mb-1">
               Admin <span class="text-[#ae2e24]">*</span>
             </div>
 
@@ -190,7 +208,7 @@
           </div>
 
           <div class="mb-4">
-            <div class="text-sm text-[#505258] font-semibold mb-1">
+            <div class="font-semibold mb-1">
               REC <span class="text-[#ae2e24]">*</span>
             </div>
 
@@ -219,16 +237,6 @@
           </div>
 
           <div class="flex justify-end">
-            <!-- <Button
-              bg-color="bg-[#0515240f]"
-              color="text-[#505258]"
-              hover="hover:bg-[#0b120e24]"
-              class="w-fit h-[32px] me-2"
-              @click="setActionName(undefined)"
-            >
-              Hủy
-            </Button> -->
-
             <Button
               class="w-fit h-[32px]"
               bg-color="bg-[#c9372C]"

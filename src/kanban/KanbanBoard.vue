@@ -2,6 +2,7 @@
   import { onMounted, onUnmounted, ref } from 'vue'
   import Sortable from 'sortablejs'
   import KanbanColumn from './components/KanbanColumn.vue'
+  import KanbanColumnAdd from './components/KanbanColumnAdd.vue'
   import KanbanOverlay from './components/KanbanOverlay.vue'
   import KanbanCandidateForm from './components/KanbanCandidateForm.vue'
   import KanbanLoading from './components/KanbanLoading.vue'
@@ -9,7 +10,7 @@
   import KanbanTooltip from './components/KanbanTooltip.vue'
   import KanbanCardMenuPopover from './components/KanbanColumnMenuPopover.vue'
   import { useKanbanColumnMenuPopover } from './composables/useKanbanColumnMenuPopover'
-import { useKanbanLoading } from './composables/useKanbanLoading'
+  import { useKanbanLoading } from './composables/useKanbanLoading'
 
   const kanbanLoading = useKanbanLoading()
 
@@ -167,11 +168,12 @@ import { useKanbanLoading } from './composables/useKanbanLoading'
     <KanbanCandidateForm />
     <KanbanHeader />
 
-    <main class="w-full flex-1 overflow-x-auto p-2 relative">
-
+    <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
         <KanbanColumn v-for="stage in stages" :key="stage.id" :stage="stage" />
       </div>
+
+      <KanbanColumnAdd />
     </main>
   </div>
 </template>
