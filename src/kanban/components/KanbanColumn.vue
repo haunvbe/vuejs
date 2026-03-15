@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { onMounted } from 'vue'
+  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
   import { useKanbanColumnMenuPopover } from '../composables/useKanbanColumnMenuPopover'
   import { useKanbanCandidateForm } from '../composables/useKanbanCandidateForm'
-  import { useKanbanHeaderMenuPopover } from '../composables/useKanbanHeaderMenuPopover'
   import Icon from '@/components/Icon.vue'
   import Button from '@/components/Button.vue'
   import Sortable from 'sortablejs'
@@ -21,9 +21,9 @@
   const columnId = `kanbanColumn${stage.id}`
   const cardListId = `kanbanCardList${stage.id}`
 
+  const globalState = useKanbanGlobalState()
   const columnMenuPopover = useKanbanColumnMenuPopover()
-  const headerMenuPopover = useKanbanHeaderMenuPopover()
-  const { showCandidateForm } = useKanbanCandidateForm()
+  const candidateForm = useKanbanCandidateForm()
 
   onMounted(() => {
     const el = document.getElementById(cardListId)
@@ -41,10 +41,10 @@
 </script>
 
 <template>
-  <div :id="columnId" class="kanban-column w-[272px] shrink-0 h-fit max-h-[calc(100vh-152px)] px-1 py-2 flex flex-col bg-[#f1f2f4] shadow-sm rounded-[12px] border border-[#e5e5e5]">
-    <div class="h-[40px]">
-      <div class="h-[32px] flex items-center px-1">
-        <div class="kanban-column__stage-name flex-1 font-semibold text-sm text-[#292a2e] pl-2 cursor-pointer">
+  <div :id="columnId" class="kanban-column w-[272px] shrink-0 h-fit max-h-[calc(100vh-152px)] px-1 flex flex-col bg-[#f1f2f4] shadow-raised rounded-[12px]">
+    <div class="p-[8px_4px_4px_4px]">
+      <div class="flex">
+        <div class="kanban-column__stage-name pt-[4px] flex flex-1 items-center cursor-pointer pl-2 font-semibold text-sm text-[#292a2e]">
           {{ stage?.name }}
         </div>
 
@@ -54,7 +54,7 @@
           bg-color="transparent"
           hover="hover:bg-[#0b120e24]"
           shadow=""
-          @click="columnMenuPopover.showMenuPopover($event, columnId); headerMenuPopover.hideMenuPopover()"
+          @click="globalState.hideMenusAndForms(); columnMenuPopover.showMenuPopover($event, columnId)"
         >
           <Icon variant="ellipsis" width="14" height="14" />
         </Button>
@@ -65,10 +65,19 @@
       <KanbanCard v-for="application in stage.data" :key="application?.id" :application />
     </div>
 
-    <div v-if="stage?.name === 'Ứng tuyển'" class="h-[40px] px-3 py-[4px]">
+    <div
+      v-if="stage?.name === 'Ứng tuyển'"
+      class="p-[0_6px_6px_4px]"
+    >
       <Button
-        class="w-full h-[32px]"
-        @click="showCandidateForm"
+        size="w-full px-2 h-[32px]"
+        color="text-[#505258]"
+        bg-color="transparent"
+        hover="hover:bg-[#0b120e24]"
+        rounded="rounded-[8px]"
+        align="items-center"
+        shadow=""
+        @click="globalState.hideMenusAndForms(); candidateForm.showCandidateForm()"
       >
         <Icon variant="plus" width="14" height="14" />
         Thêm ứng viên
@@ -81,7 +90,7 @@
   .kanban-scroll {
     overflow-x: hidden;
     overflow-y: auto;
-    padding: 4px 6px 4px 4px;
+    padding: 4px 6px 0 4px;
     min-height: 36px;
   }
 

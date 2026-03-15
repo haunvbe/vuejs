@@ -1,11 +1,15 @@
 <script setup lang="ts">
   import { ref } from 'vue'
+  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
   import Button from '@/components/Button.vue'
   import Icon from '@/components/Icon.vue'
 
   const isAddingStage = ref<boolean>(false)
+  const globalState = useKanbanGlobalState()
 
   function addStage() {
+    globalState.hideMenusAndForms()
+
     isAddingStage.value = true
   }
 
@@ -15,13 +19,15 @@
 </script>
 
 <template>
-  <div class="kanban-column w-[272px] shrink-0 h-fit flex flex-col shadow-sm rounded-[12px] border border-[#e5e5e5]">
+  <div
+    :class="!isAddingStage ? '' : 'shadow-raised'"
+    class="kanban-column w-[272px] shrink-0 h-fit flex flex-col bg-[#f1f2f4] rounded-[12px]">
     <Button
       v-if="!isAddingStage"
       size="w-full px-4 h-[40px]"
-      color="text-[#292a2e]"
-      bg-color="transparent"
-      hover="hover:bg-[#f1f2f4]"
+      color="text-[#505258]"
+      bg-color="bg-[#0b120e24]"
+      hover="hover:bg-[#00000029]"
       rounded="rounded-[12px]"
       align="items-center"
       shadow=""
@@ -32,49 +38,34 @@
     </Button>
 
     <section v-else>
-      <div class="text-sm text-[#505258] p-2 my-2">
-        <div class="mb-4">
-          <div class="font-semibold mb-1">
-            Tên giai đoạn <span class="text-[#ae2e24]">*</span>
-          </div>
-
+      <div class="text-sm text-[#505258] p-2">
+        <div class="mb-2">
           <VaInput
-            class="w-full text-sm"
+            class="w-full text-sm bg-white"
             placeholder="Nhập tên giai đoạn"
             autocomplete="off"
             clearable
+            autofocus
             immediate-validation
           />
         </div>
 
-        <div class="mb-4">
-          <div class="font-semibold mb-1">
-            Chọn mẫu email <span class="text-[#ae2e24]">*</span>
-          </div>
-
-          <VaSelect
-            class="w-full text-sm"
-            placeholder="Chọn mẫu email"
-            text-by="name"
-            value-by="id"
-            :options="[{ id: 1, name: 'Nguyen Van A' }, { id: 2, name: 'Nguyen Van B' }]"
-          />
-        </div>
-
-        <div class="flex justify-end">
-          <Button
-            bg-color="bg-[#0515240f]"
-            color="text-[#505258]"
-            hover="hover:bg-[#0b120e24]"
-            class="w-fit h-[32px] me-2"
-            @click="cancelAddStage"
-          >
-            Hủy
-          </Button>
-
+        <div class="flex">
           <Button class="w-fit h-[32px]">
             <Icon variant="archive" width="14" height="14" />
             Lưu
+          </Button>
+
+          <Button
+            size="w-[32px] h-[32px]"
+            color="text-[#505258]"
+            hover="hover:bg-[#0b120e24]"
+            class="ms-2"
+            bg-color=""
+            shadow=""
+            @click="cancelAddStage"
+          >
+            <Icon variant="close" width="14" height="14" />
           </Button>
         </div>
       </div>

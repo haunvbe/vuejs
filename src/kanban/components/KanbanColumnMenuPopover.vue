@@ -42,7 +42,7 @@
     <nav
       v-if="menuPopover.visible"
       :style="{ left: menuPopover.x + 'px', top: menuPopover.y + 'px' }"
-      class="w-[304px] max-h-[400px] z-[1050] absolute bg-white rounded-[8px] shadow-md pb-4"
+      class="w-[304px] max-h-[400px] z-[1050] absolute bg-white rounded-[8px] shadow-overlay pb-4"
     >
       <header class="flex h-[48px] p-[4px]">
         <div class="w-[40px] h-[40px]">

@@ -22,7 +22,7 @@
 </script>
 
 <template>
-  <div class="kanban-card bg-white relative rounded-[8px] mb-2 min-h-[36px] max-h-[160px] shadow-[0_1px_1px_#1e1f2140,0_0_1px_#1e1f214f]">
+  <div class="kanban-card bg-white relative rounded-[8px] mb-2 min-h-[36px] max-h-[160px] shadow-raised">
     <Button
       size="w-[24px] h-[24px]"
       bg-color="transparent"

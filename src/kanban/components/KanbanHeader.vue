@@ -3,10 +3,10 @@
   import Icon from '@/components/Icon.vue'
   import KanbanHeaderMenuPopover from './KanbanHeaderMenuPopover.vue'
   import { useKanbanHeaderMenuPopover } from '../composables/useKanbanHeaderMenuPopover'
-  import { useKanbanColumnMenuPopover } from '../composables/useKanbanColumnMenuPopover'
+  import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
 
+  const globalState = useKanbanGlobalState()
   const headerMenuPopover = useKanbanHeaderMenuPopover()
-  const columnMenuPopover = useKanbanColumnMenuPopover()
 </script>
 
 <template>
@@ -49,7 +49,7 @@
             bg-color="transparent"
             hover="hover:bg-[#0b120e24]"
             shadow=""
-            @click="headerMenuPopover.showMenuPopover(); columnMenuPopover.hideMenuPopover()"
+            @click="globalState.hideMenusAndForms(); headerMenuPopover.showMenuPopover()"
           >
             <Icon variant="ellipsis" width="14" height="14" />
           </Button>

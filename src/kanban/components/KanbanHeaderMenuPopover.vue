@@ -26,7 +26,7 @@
 </script>
 
 <template>
-  <nav v-if="menuPopover.visible" class="w-[304px] max-h-[400px] z-[1050] absolute top-0 right-0 bg-white shadow-sm rounded-[8px] shadow-md">
+  <nav v-if="menuPopover.visible" class="w-[304px] max-h-[400px] z-[1050] absolute top-0 right-0 bg-white shadow-sm rounded-[8px] shadow-overlay">
     <header class="flex h-[48px] p-[4px]">
       <div class="flex-1 h-[40px] pl-[40px] leading-[40px] text-center text-[#505258] font-semibold text-sm">
         Menu

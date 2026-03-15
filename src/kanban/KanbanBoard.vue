@@ -168,7 +168,7 @@
     <KanbanCandidateForm />
     <KanbanHeader />
 
-    <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative">
+    <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative bg-[#f1f2f4]">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
         <KanbanColumn v-for="stage in stages" :key="stage.id" :stage="stage" />
       </div>
