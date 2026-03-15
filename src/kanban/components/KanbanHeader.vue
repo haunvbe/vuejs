@@ -5,8 +5,11 @@
   import { useKanbanHeaderMenuPopover } from '../composables/useKanbanHeaderMenuPopover'
   import { useKanbanGlobalState } from '../composables/useKanbanGlobalState'
   import { useKanbanTooltip } from '../composables/useKanbanTooltip'
+  import { useKanbanHeaderAccountMenuPopover } from '../composables/useKanbanHeaderAccountMenuPopover'
+  import KanbanHeaderAccountMenu from './KanbanHeaderAccountMenuPopover.vue'
 
   const globalState = useKanbanGlobalState()
+  const accountMenuPopover = useKanbanHeaderAccountMenuPopover()
   const headerMenuPopover = useKanbanHeaderMenuPopover()
   const { showTooltip, hideTooltip } = useKanbanTooltip()
 </script>
@@ -65,9 +68,12 @@
           shadow=""
           @mouseenter="showTooltip($event, 'Tài khoản')"
           @mouseleave="hideTooltip"
+          @click="globalState.hideMenusAndForms(); accountMenuPopover.showMenuPopover()"
           >
           <div class="w-[24px] h-[24px] rounded-full bg-red-100"></div>
         </Button>
+
+        <KanbanHeaderAccountMenu />
       </div>
     </div>
 

@@ -15,7 +15,7 @@
   import AngleLeft from './icons/AngleLeft.vue'
   import TrashIcon from './icons/TrashIcon.vue'
   import BellIcon from './icons/BellIcon.vue'
-  import GlobeIcon from './icons/globeIcon.vue'
+  import GlobeIcon from './icons/GlobeIcon.vue'
   import GeistIcon from './icons/GeistIcon.vue'
 
   type Icon = {

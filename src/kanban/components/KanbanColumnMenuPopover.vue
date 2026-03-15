@@ -80,8 +80,8 @@
       </header>
 
       <section v-if="isActionInactive()">
-        <ul class="text-sm text-[#505258]">
-          <li class="flex items-center">
+        <ul>
+          <li>
             <Button
               size="w-full h-[32px]"
               color="text-[#292a2e]"
@@ -98,7 +98,7 @@
             </Button>
           </li>
 
-          <li class="flex items-center">
+          <li>
             <Button
               size="w-full h-[32px]"
               color="text-[#292a2e]"
@@ -115,7 +115,7 @@
             </Button>
           </li>
 
-          <li class="flex items-center">
+          <li>
             <Button
               size="w-full h-[32px]"
               color="text-[#292a2e]"
@@ -132,7 +132,7 @@
             </Button>
           </li>
 
-          <li class="flex items-center">
+          <li>
             <Button
               size="w-full h-[32px]"
               color="text-[#080f214a]"
