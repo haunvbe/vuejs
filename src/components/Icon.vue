@@ -14,6 +14,9 @@
   import CopyIcon from './icons/CopyIcon.vue'
   import AngleLeft from './icons/AngleLeft.vue'
   import TrashIcon from './icons/TrashIcon.vue'
+  import BellIcon from './icons/BellIcon.vue'
+  import GlobeIcon from './icons/globeIcon.vue'
+  import GeistIcon from './icons/GeistIcon.vue'
 
   type Icon = {
     width?: string
@@ -33,6 +36,9 @@
     | 'copy'
     | 'angle-left'
     | 'trash'
+    | 'bell'
+    | 'globe'
+    | 'geist'
   }
 
   const {
@@ -58,4 +64,7 @@
   <CopyIcon v-else-if="variant === 'copy'" :width :height />
   <AngleLeft v-else-if="variant === 'angle-left'" :width :height />
   <TrashIcon v-else-if="variant === 'trash'" :width :height />
+  <BellIcon v-else-if="variant === 'bell'" :width :height />
+  <GlobeIcon v-else-if="variant === 'globe'" :width :height />
+  <GeistIcon v-else-if="variant === 'geist'" :width :height />
 </template>

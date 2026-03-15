@@ -56,8 +56,8 @@
             bg-color="transparent"
             hover="hover:bg-[#0515240f]"
             align="items-center"
-            font-weight="font-medium"
-            class="px-4"
+            font-weight=""
+            class="px-4 gap-3"
             shadow=""
             @click="editJob"
           >
@@ -73,12 +73,12 @@
             bg-color="transparent"
             hover="hover:bg-[#0515240f]"
             align="items-center"
-            font-weight="font-medium"
-            class="px-4"
+            font-weight=""
+            class="px-4 gap-3"
             shadow=""
             @click="editJobApplication"
           >
-            <Icon variant="copy" width="14" height="14" />
+            <Icon variant="geist" width="14" height="14" />
             Đơn ứng tuyển
           </Button>
         </li>

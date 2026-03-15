@@ -38,7 +38,7 @@
 </script>
 
 <template>
-  <Teleport v-if="menuPopover?.columnId" to="body">
+  <Teleport v-if="menuPopover?.columnId" to="#kanban">
     <nav
       v-if="menuPopover.visible"
       :style="{ left: menuPopover.x + 'px', top: menuPopover.y + 'px' }"

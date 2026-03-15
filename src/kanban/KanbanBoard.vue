@@ -155,6 +155,11 @@
       forceFallback: true,
       fallbackClass: 'kanban-drag-shadow',
       chosenClass: 'kanban-chosen',
+      filter: '.kanban-column-1',
+      preventOnFilter: false,
+      onFilter: function (evt) {
+        console.log('Phần tử này không được kéo');
+      }
     })
   })
 </script>
@@ -170,7 +175,7 @@
 
     <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative bg-[#f1f2f4]">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
-        <KanbanColumn v-for="stage in stages" :key="stage.id" :stage="stage" />
+        <KanbanColumn v-for="stage in stages" :key="stage.id" :stage="stage" :class="`kanban-column-${stage.id}`" />
       </div>
 
       <KanbanColumnAdd />

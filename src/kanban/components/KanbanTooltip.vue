@@ -18,6 +18,8 @@
 
 <style scoped>
   .kanban-tooltip {
+    width: max-content;
+    max-width: 240px;
     padding: 4px 10px;
     position: fixed;
     border-radius: 6px;
