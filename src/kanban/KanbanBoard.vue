@@ -184,15 +184,16 @@
 </template>
 
 <style>
-  .va-dropdown__content {
+  .kanban,
+  .kanban *,
+  .kanban-select .va-select-option  {
+    font-family: "Inter", sans-serif !important;
+  }
+
+  .kanban-select {
     border-radius: 8px;
     font-size: 14px;
     z-index: 1050 !important;
-  }
-
-  #kanban,
-  #kanban * {
-    font-family: "Inter", sans-serif !important;
   }
 
   .kanban input::placeholder {

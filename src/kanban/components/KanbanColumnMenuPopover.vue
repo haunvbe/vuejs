@@ -175,6 +175,7 @@
 
             <VaSelect
               class="w-full text-sm"
+              content-class="kanban-select"
               placeholder="Chọn mẫu email"
               text-by="name"
               value-by="id"
