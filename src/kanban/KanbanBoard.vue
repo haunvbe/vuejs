@@ -14,7 +14,7 @@
 
   const kanbanLoading = useKanbanLoading()
 
-  // kanbanLoading.showLoading()
+  kanbanLoading.showLoading()
 
   const stages = ref<any>([
     {
@@ -185,7 +185,7 @@
 
 <style>
   .kanban,
-  .kanban *,
+  .kanban *
   .kanban-select .va-select-option  {
     font-family: "Inter", sans-serif !important;
   }
