@@ -12,11 +12,17 @@
   import CircleQuestionIcon from './icons/CircleQuestionIcon.vue'
   import ChartKanbanIcon from './icons/ChartKanbanIcon.vue'
   import CopyIcon from './icons/CopyIcon.vue'
-  import AngleLeft from './icons/AngleLeft.vue'
+  import AngleLeftIcon from './icons/AngleLeftIcon.vue'
+  import AngleRightIcon from './icons/AngleRightIcon.vue'
   import TrashIcon from './icons/TrashIcon.vue'
   import BellIcon from './icons/BellIcon.vue'
   import GlobeIcon from './icons/GlobeIcon.vue'
   import GeistIcon from './icons/GeistIcon.vue'
+  import CommentIcon from './icons/CommentIcon.vue'
+  import UserIcon from './icons/UserIcon.vue'
+  import ActivityIcon from './icons/ActivityIcon.vue'
+  import HomeIcon from './icons/HomeIcon.vue'
+  import Automation from './icons/Automation.vue'
 
   type Icon = {
     width?: string
@@ -35,10 +41,16 @@
     | 'chart-kanban'
     | 'copy'
     | 'angle-left'
+    | 'angle-right'
     | 'trash'
     | 'bell'
     | 'globe'
     | 'geist'
+    | 'comment'
+    | 'user'
+    | 'activity'
+    | 'home'
+    | 'automation'
   }
 
   const {
@@ -62,9 +74,15 @@
   <CircleQuestionIcon v-else-if="variant === 'circle-question'" :width :height />
   <ChartKanbanIcon v-else-if="variant === 'chart-kanban'" :width :height />
   <CopyIcon v-else-if="variant === 'copy'" :width :height />
-  <AngleLeft v-else-if="variant === 'angle-left'" :width :height />
+  <AngleLeftIcon v-else-if="variant === 'angle-left'" :width :height />
+  <AngleRightIcon v-else-if="variant === 'angle-right'" :width :height />
   <TrashIcon v-else-if="variant === 'trash'" :width :height />
   <BellIcon v-else-if="variant === 'bell'" :width :height />
   <GlobeIcon v-else-if="variant === 'globe'" :width :height />
   <GeistIcon v-else-if="variant === 'geist'" :width :height />
+  <CommentIcon v-else-if="variant === 'comment'" :width :height />
+  <UserIcon v-else-if="variant === 'user'" :width :height />
+  <ActivityIcon v-else-if="variant === 'activity'" :width :height />
+  <HomeIcon v-else-if="variant === 'home'" :width :height />
+  <Automation v-else-if="variant === 'automation'" :width :height />
 </template>

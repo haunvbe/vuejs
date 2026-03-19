@@ -11,10 +11,11 @@
   import KanbanCardMenuPopover from './components/KanbanColumnMenuPopover.vue'
   import { useKanbanColumnMenuPopover } from './composables/useKanbanColumnMenuPopover'
   import { useKanbanLoading } from './composables/useKanbanLoading'
+  import KanbanCandidateDetailModal from './components/KanbanCandidateDetailModal.vue'
 
-  const kanbanLoading = useKanbanLoading()
+  // const kanbanLoading = useKanbanLoading()
 
-  kanbanLoading.showLoading()
+  // kanbanLoading.showLoading()
 
   const stages = ref<any>([
     {
@@ -172,6 +173,7 @@
     <KanbanCardMenuPopover />
     <KanbanCandidateForm />
     <KanbanHeader />
+    <KanbanCandidateDetailModal />
 
     <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative bg-[#f1f2f4]">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
@@ -185,7 +187,8 @@
 
 <style>
   .kanban,
-  .kanban *
+  .kanban *,
+  .kanban-tooltip,
   .kanban-select .va-select-option  {
     font-family: "Inter", sans-serif !important;
   }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { useKanbanLoading } from '../composables/useKanbanLoading'
+  import { useKanbanTopLoading } from '../composables/useKanbanTopLoading'
 
-  const { loading } = useKanbanLoading()
+  const { loading } = useKanbanTopLoading()
 </script>
 
 <template>
@@ -19,30 +19,31 @@
   .kanban-loading {
     display: flex;
     gap: 3px;
-    height: 24px;
+    align-items: flex-start;
+    height: 26px;
   }
 
   .kanban-loading span {
-    width: 4px;
-    height: 100%;
+    width: 5px;
     background: #8a93a3;
-    animation: kanban-bars 0.8s infinite ease-in-out;
+    transform-origin: top;
+    animation: kanban-bars 0.9s infinite ease-in-out;
   }
 
   .kanban-loading span:nth-child(2) {
-    animation-delay: 0.1s;
-  }
-
-  .kanban-loading span:nth-child(3) {
     animation-delay: 0.2s;
   }
 
+  .kanban-loading span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
   @keyframes kanban-bars {
-    0%,100% {
-      transform: scaleY(0.4);
+    0%, 100% {
+      height: 6px;
     }
     50% {
-      transform: scaleY(1);
+      height: 26px;
     }
   }
 </style>
