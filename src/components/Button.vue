@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { computed } from 'vue'
+
   type Button = {
     size?: string
     color?: string
@@ -10,6 +12,7 @@
     hover?: string
     shadow?: string
     align?: string
+    transition?: string
     type?: 'button' | 'submit' | 'reset'
   }
 
@@ -24,28 +27,32 @@
     hover = 'hover:bg-[#1558bc]',
     shadow = 'shadow-sm',
     align = 'items-center justify-center',
+    transition = 'transition-colors',
     type = 'button'
   } = defineProps<Button>()
 
-  const classNames: string = [
-    size,
-    color,
-    bgColor,
-    rounded,
-    fontSize,
-    fontWeight,
-    focusVisible,
-    hover,
-    shadow,
-    align
-  ].join(' ')
+  const classNames = computed(() => {
+    return [
+      size,
+      color,
+      bgColor,
+      rounded,
+      fontSize,
+      fontWeight,
+      focusVisible,
+      hover,
+      shadow,
+      align,
+      transition
+    ].join(' ')
+  })
 </script>
 
 <template>
   <button
     :type
     :class="classNames"
-    class="inline-flex gap-2 transition-colors disabled:cursor-not-allowed disabled:opacity-90">
+    class="inline-flex gap-2 disabled:cursor-not-allowed disabled:opacity-90">
     <slot></slot>
   </button>
 </template>

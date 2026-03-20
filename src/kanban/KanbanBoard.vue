@@ -257,4 +257,38 @@
     z-index: 100;
     border-radius: inherit;
   }
+
+  .kanban-scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 4px 6px 0 4px;
+    min-height: 36px;
+  }
+
+  @supports (scrollbar-width: thin) {
+    .kanban-scroll {
+      scrollbar-width: thin;
+      scrollbar-color: #c5c8c9 #e3e5e8;
+    }
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    .kanban-scroll::-webkit-scrollbar {
+      width: 6px;
+      background: #e3e5e8;
+    }
+
+    .kanban-scroll::-webkit-scrollbar-track {
+      background: #e3e5e8;
+    }
+
+    .kanban-scroll::-webkit-scrollbar-thumb {
+      background: #c5c8c9;
+      border-radius: 12px;
+    }
+
+    .kanban-scroll:hover::-webkit-scrollbar-thumb {
+      background: #9ea3a6;
+    }
+  }
 </style>
