@@ -3,7 +3,7 @@
   import { useKanbanCandidateForm } from '../composables/useKanbanCandidateForm'
   import Button from '@/components/Button.vue'
   import Icon from '@/components/Icon.vue'
-
+  const files = ref<any>()
   const {
     candidateForm,
     hideCandidateForm
@@ -132,11 +132,26 @@
         </div>
 
         <VaFileUpload
+          v-model="files"
           dropzone
-          file-types="jpg,png"
-          upload-button-text="Tải tệp tin"
-          drop-zone-text="Kéo thả tệp vào đây để tải lên"
-        />
+        >
+          <div class="flex flex-col items-center justify-center my-6">
+            <div class="text-sm text-[#505258] font-medium mb-4">
+              Kéo thả tệp vào đây để tải lên
+            </div>
+
+            <Button
+              size="px-2 h-[32px]"
+              bg-color="bg-transparent"
+              color="text-[#505258]"
+              class="border border-[#0b120e24]"
+            >
+              <Icon variant="attachment" width="16" height="16" />
+
+              Tải tệp tin
+            </Button>
+          </div>
+        </VaFileUpload>
       </div>
     </main>
 
@@ -158,7 +173,3 @@
     </footer>
   </div>
 </template>
-
-
-<style scoped>
-</style>

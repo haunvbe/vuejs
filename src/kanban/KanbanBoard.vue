@@ -12,6 +12,8 @@
   import { useKanbanColumnMenuPopover } from './composables/useKanbanColumnMenuPopover'
   import { useKanbanLoading } from './composables/useKanbanLoading'
   import KanbanCandidateDetailModal from './components/KanbanCandidateDetailModal.vue'
+  import KanbanCandidateCVViewer from './components/KanbanCandidateCVViewer.vue'
+  import KanbanBadgeListPopover from './components/KanbanBadgeListPopover.vue'
 
   // const kanbanLoading = useKanbanLoading()
 
@@ -174,6 +176,7 @@
     <KanbanCandidateForm />
     <KanbanHeader />
     <KanbanCandidateDetailModal />
+    <KanbanCandidateCVViewer />
 
     <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative bg-[#f1f2f4]">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
@@ -189,20 +192,52 @@
   .kanban,
   .kanban *,
   .kanban-tooltip,
-  .kanban-select .va-select-option  {
+  .kanban-select .va-select-option,
+  .kanban-date .va-button__content,
+  .kanban-date .va-date-picker__header__month {
     font-family: "Inter", sans-serif !important;
   }
 
-  .kanban-select {
+  .kanban-select,
+  .kanban-date {
     border-radius: 8px;
+    box-shadow: 0px 1px 1px #1e1f2140, 0px 0px 1px #1e1f214f;
     font-size: 14px;
+    color: #292a2e;
     z-index: 1050 !important;
+  }
+
+  .kanban-select .va-select-option-list {
+    outline: none;
+  }
+
+  .kanban-badge--blue .va-badge__text-wrapper {
+    padding: 0 2px;
+    border: none;
+    border-radius: 4px;
+    color: #1868db !important;
+    background-color: #e9f2fe !important;
+  }
+
+  .kanban-field--size-xs .va-input-wrapper__field {
+    height: 28px;
+    min-height: 28px;
+  }
+
+  .kanban-field--size-md .va-input-wrapper__field {
+    height: 30px;
+    min-height: 30px;
   }
 
   .kanban input::placeholder {
     color: #8c8f97;
     font-weight: 600;
     font-size: 13px;
+  }
+
+  .kanban .va-input-wrapper__text {
+    font-weight: 500;
+    color: #292a2e;
   }
 
   .kanban .va-input-wrapper__field {
@@ -212,31 +247,24 @@
     transition-duration: 0.15s;
   }
 
-  .kanban .va-file-upload__field button {
-    --va-background-color: #1868db !important;
-    width: fit-content;
-    height: 32px;
-    padding: 0;
-    border-radius: 0.375rem;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-    transition-duration: 150ms;
+  .kanban .va-file-upload {
+    border: 1px dashed rgba(17, 24, 39, 0.25);
+    background-color: transparent !important;
   }
 
-  .kanban .va-file-upload__field__text,
-  .kanban .va-file-upload-list-item__content {
-    color: #8c8f97;
-    font-size: 14px;
-    font-weight: 600;
+  .kanban .va-file-upload-list-item {
+    height: 48px;
+    box-shadow: none;
+    border-radius: 8px;
+    border: 1px solid #0b120e24;
+    padding: 0 12px;
   }
 
-  .kanban .va-file-upload__field button .va-button__content {
+  .kanban .va-file-upload-list-item__name,
+  .kanban .va-file-upload-list-item__size {
+    color: #505258;
+    font-weight: 500;
     font-size: 14px;
-    font-weight: 600;
   }
 
   .kanban-drag-shadow {
