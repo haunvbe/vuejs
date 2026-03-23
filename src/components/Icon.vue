@@ -32,6 +32,7 @@
   import CompanyIcon from './icons/CompanyIcon.vue'
   import RepoIcon from './icons/RepoIcon.vue'
   import BookIcon from './icons/BookIcon.vue'
+  import TableIcon from './icons/TableIcon.vue'
 
   type Icon = {
     width?: string
@@ -69,6 +70,7 @@
     | 'company'
     | 'repo'
     | 'book'
+    | 'table'
   }
 
   const {
@@ -112,4 +114,5 @@
   <CompanyIcon v-else-if="variant === 'company'" :width :height />
   <RepoIcon v-else-if="variant === 'repo'" :width :height />
   <BookIcon v-else-if="variant === 'book'" :width :height />
+  <TableIcon v-else-if="variant === 'table'" :width :height />
 </template>

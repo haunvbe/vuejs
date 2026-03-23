@@ -774,7 +774,7 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
                       hover=""
                       shadow=""
                     >
-                      <Icon variant="user-group" width="16" height="16" />
+                      <Icon variant="table" width="16" height="16" />
                     </Button>
 
                     <VaSelect
