@@ -211,6 +211,20 @@
     outline: none;
   }
 
+  .kanban-textarea .va-input-wrapper__field {
+    min-height: 120px;
+    max-height: 160px;
+  }
+
+  .kanban-textarea.va-textarea {
+    border-radius: 6px;
+    border: 1px solid transparent;
+  }
+
+  .kanban-textarea.va-input-wrapper--focused {
+    border: 1px solid #1868db;
+  }
+
   .kanban-badge--blue .va-badge__text-wrapper {
     padding: 0 2px;
     border: none;
@@ -233,6 +247,11 @@
     color: #8c8f97;
     font-weight: 600;
     font-size: 13px;
+  }
+
+  .kanban textarea::placeholder {
+    font-weight: normal;
+    font-size: 14px;
   }
 
   .kanban .va-input-wrapper__text {

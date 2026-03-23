@@ -27,6 +27,8 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
     description: ''
   })
 
+  const isDescription = ref<boolean>(false)
+
   const source = ref<any>([{ id: 1, name: 'Website' }, { id: 2, name: 'Top CV' }, { id: 3, name: 'Mobile' }])
 
   function tabHome() {
@@ -246,7 +248,7 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
                 </nav>
 
                 <main class="w-[86%] p-4">
-                  <section class="mt-5">
+                  <section class="my-5">
                     <header class="flex mb-4">
                       <Button
                         size="h-[32px]"
@@ -274,16 +276,91 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
 
                     <div class="mb-4">
                       <Button
-                        size="w-full px-4 py-2 h-[64px]"
+                        v-if="!isDescription"
+                        size="w-full px-4 py-2 h-[60px]"
                         color="text-[#6b6e76]"
                         bg-color="transparent"
-                        class="border border-[#8c8f97] text-left"
                         font-weight="font-medium"
+                        hover="hover:bg-[#f9fafb] hover:border-[#d1d5db]"
+                        class="border border-[#e5e7eb] text-left"
                         align=""
+                        shadow=""
+                        transition="transition-all"
+                        @click="isDescription = true"
+                      >
+                        Thêm ghi chú...
+                      </Button>
+
+                      <div v-if="isDescription">
+                        <VaTextarea
+                          v-model="user.description"
+                          class="kanban-textarea w-full mb-2"
+                          autocomplete="off"
+                          autofocus
+                          placeholder="Ghi chú chi tiết về ứng viên của bạn..."
+                        />
+                      </div>
+
+                      <div v-if="isDescription" class="flex gap-2">
+                        <Button
+                          size="px-2 h-[32px]"
+                        >
+                          <Icon variant="archive" width="14" height="14" />
+                          Lưu
+                        </Button>
+
+                        <Button
+                          size="px-4 h-[32px]"
+                          color="text-[#505258]"
+                          hover="hover:bg-[#0b120e24]"
+                          class="ms-2"
+                          bg-color=""
+                          shadow=""
+                          @click="() => isDescription = false"
+                        >
+                          Hủy
+                        </Button>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section class="mb-5">
+                    <header class="flex mb-2">
+                      <Button
+                        size="h-[32px]"
+                        color="text-[#2a292e]"
+                        bg-color="transparent"
                         hover=""
                         shadow=""
                       >
-                      Ghi chú chi tiết về ứng viên của bạn...
+                        <Icon variant="comment" width="16" height="16" />
+
+                        Bình luận
+                      </Button>
+
+                      <div class="flex flex-1 justify-end">
+                        <!-- <Button
+                          size="px-2 h-[32px]"
+                          color="text-[#292a2e]"
+                          bg-color="bg-[#0515240f]"
+                          hover="hover:bg-[#0b120e24]"
+                        >
+                          Chỉnh sửa
+                        </Button> -->
+                      </div>
+                    </header>
+
+                    <div class="mb-4">
+                      <Button
+                        size="w-full px-4 h-[32px]"
+                        color="text-[#6b6e76]"
+                        bg-color="bg-white"
+                        font-weight="font-medium"
+                        align="items-center"
+                        shadow="shadow-raised"
+                        hover="hover:bg-[#f8f8f8]"
+                      >
+                      Viết bình luận của bạn...
                     </Button>
                     </div>
                   </section>
