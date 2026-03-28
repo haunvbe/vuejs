@@ -1,19 +1,19 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, onMounted, nextTick } from 'vue'
   import { useKanbanTooltip } from '../composables/useKanbanTooltip'
   import { useKanbanCandidateDetailModal } from '../composables/useKanbanCandidateDetailModal'
   import { useKanbanBadgeListPopover } from '../composables/useKanbanBadgeListPopover'
   import Button from '@/components/Button.vue'
   import Icon from '@/components/Icon.vue'
   import KanbanCandidateApplicationForm from './KanbanCandidateApplicationForm.vue'
-import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
+  import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
+import CandidateCommentSection from './CandidateCommentSection.vue'
 
 
   const { state, setTab, generateClassNames } = useKanbanCandidateDetailModal()
   const { showTooltip, hideTooltip } = useKanbanTooltip()
   const { show: showBadgeListPopover } = useKanbanBadgeListPopover()
   const value = ref<any>([{ id: 1, name: 'haunv' }, { id: 2, name: 'ninhdtd' }, { id: 3, name: 'trangdt' }])
-
   const user = ref<any>({
     name: 'Nguyễn Văn Hậu',
     phone: '0345670976',
@@ -262,7 +262,7 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
                         Ghi chú
                       </Button>
 
-                      <!-- <div class="flex flex-1 justify-end">
+                      <div class="flex flex-1 justify-end">
                         <Button
                           size="px-2 h-[32px]"
                           color="text-[#292a2e]"
@@ -271,7 +271,7 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
                         >
                           Chỉnh sửa
                         </Button>
-                      </div> -->
+                      </div>
                     </header>
 
                     <div class="mb-4">
@@ -324,46 +324,8 @@ import KanbanBadgeListPopover from './KanbanBadgeListPopover.vue'
                     </div>
                   </section>
 
-                  <section class="mb-5">
-                    <header class="flex mb-2">
-                      <Button
-                        size="h-[32px]"
-                        color="text-[#2a292e]"
-                        bg-color="transparent"
-                        hover=""
-                        shadow=""
-                      >
-                        <Icon variant="comment" width="16" height="16" />
+                  <CandidateCommentSection />
 
-                        Bình luận
-                      </Button>
-
-                      <div class="flex flex-1 justify-end">
-                        <!-- <Button
-                          size="px-2 h-[32px]"
-                          color="text-[#292a2e]"
-                          bg-color="bg-[#0515240f]"
-                          hover="hover:bg-[#0b120e24]"
-                        >
-                          Chỉnh sửa
-                        </Button> -->
-                      </div>
-                    </header>
-
-                    <div class="mb-4">
-                      <Button
-                        size="w-full px-4 h-[32px]"
-                        color="text-[#6b6e76]"
-                        bg-color="bg-white"
-                        font-weight="font-medium"
-                        align="items-center"
-                        shadow="shadow-raised"
-                        hover="hover:bg-[#f8f8f8]"
-                      >
-                      Viết bình luận của bạn...
-                    </Button>
-                    </div>
-                  </section>
                 </main>
               </div>
 

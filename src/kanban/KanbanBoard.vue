@@ -225,6 +225,22 @@
     border: 1px solid #1868db;
   }
 
+  .kanban-comment {
+    min-height: 36px;
+    overflow-y: hidden;
+    resize: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 0;
+  }
+
+  .kanban-comment:focus,
+  .kanban-comment:focus-visible {
+    outline: none;
+  }
+
   .kanban-badge--blue .va-badge__text-wrapper {
     padding: 0 2px;
     border: none;
