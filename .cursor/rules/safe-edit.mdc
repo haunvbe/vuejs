@@ -1,0 +1,19 @@
+---
+description: Safe editing rules to prevent breaking code
+alwaysApply: true
+---
+
+# Editing Rules
+- Only modify selected code
+- Do not change unrelated logic
+- Do not introduce breaking changes
+- Keep existing structure unless necessary
+
+# Refactoring
+- Avoid refactoring unless explicitly requested
+- Do not rename variables unnecessarily
+- Do not reorganize files
+
+# Output
+- Make minimal changes
+- Keep diff small and focused

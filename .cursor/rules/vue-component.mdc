@@ -1,0 +1,40 @@
+---
+description: Rules for Vue component development
+globs: "**/*.vue"
+---
+
+# Component Structure
+- One component should have one clear responsibility
+- Keep components small and focused
+- Split component only when necessary (reuse or too large)
+
+# Template
+- Keep template simple and readable
+- Avoid complex inline expressions
+- Move logic to script section when possible
+
+# Script (TypeScript)
+- Use simple and clear types
+- Avoid complex generics
+- Prefer explicit typing when helpful
+- Do not over-abstract types
+
+# Props & State
+- Keep props minimal and well-defined
+- Avoid passing unnecessary data
+- Use computed for derived state
+- Do not duplicate state
+
+# Events
+- Keep event naming consistent
+- Avoid excessive event chaining
+
+# Styling
+- Prefer simple class usage
+- Avoid complex dynamic styling logic
+- Use scoped styles when appropriate
+
+# Constraints
+- Do not rewrite entire component
+- Do not restructure component unless required
+- Only modify relevant parts

@@ -1,0 +1,38 @@
+---
+description: Base frontend rules for Vue + TypeScript project
+alwaysApply: true
+---
+
+# Philosophy
+- Ship > perfect
+- Readable > clever
+- Consistency > best practice
+- Working UI > pixel-perfect UI
+
+# General Coding
+- Keep code simple and easy to understand
+- Prefer explicit and clear logic over clever solutions
+- Avoid unnecessary abstraction
+- Avoid premature optimization
+
+# Architecture
+- Follow existing project structure
+- Do not introduce new patterns unless necessary
+- Keep consistency with current codebase
+
+# Constraints
+- Do not rewrite entire files
+- Do not refactor unrelated code
+- Only modify what is necessary
+- Keep changes minimal and scoped
+
+# AI Behavior
+- Follow existing code style strictly
+- Keep solution minimal
+- Do not over-engineer
+- Prefer incremental improvements
+
+# Anti-Overthinking
+- Prefer good enough over perfect
+- Stop after delivering a working solution
+- Do not attempt to optimize unless required
