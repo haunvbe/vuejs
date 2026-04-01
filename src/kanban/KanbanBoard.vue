@@ -10,10 +10,9 @@
   import KanbanTooltip from './components/KanbanTooltip.vue'
   import KanbanCardMenuPopover from './components/KanbanColumnMenuPopover.vue'
   import { useKanbanColumnMenuPopover } from './composables/useKanbanColumnMenuPopover'
-  import { useKanbanLoading } from './composables/useKanbanLoading'
   import KanbanCandidateDetailModal from './components/KanbanCandidateDetailModal.vue'
   import KanbanCandidateCVViewer from './components/KanbanCandidateCVViewer.vue'
-  import KanbanBadgeListPopover from './components/KanbanBadgeListPopover.vue'
+import CandidateEmailTemplate from './components/CandidateEmailTemplate.vue'
 
   // const kanbanLoading = useKanbanLoading()
 
@@ -175,8 +174,9 @@
     <KanbanCardMenuPopover />
     <KanbanCandidateForm />
     <KanbanHeader />
-    <KanbanCandidateDetailModal />
+    <!-- <KanbanCandidateDetailModal /> -->
     <KanbanCandidateCVViewer />
+    <CandidateEmailTemplate />
 
     <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative bg-[#f1f2f4]">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">

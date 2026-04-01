@@ -15,6 +15,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "@vueup/vue-quill": "^1.2.0",
     "dragscroll": "^0.0.8",
     "pinia": "^3.0.4",
     "sortablejs": "^1.15.7",

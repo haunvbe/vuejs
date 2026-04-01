@@ -34,6 +34,7 @@
   import BookIcon from './icons/BookIcon.vue'
   import TableIcon from './icons/TableIcon.vue'
   import PlaneIcon from './icons/PlaneIcon.vue'
+  import PlannerIcon from './icons/PlannerIcon.vue'
 
   type Icon = {
     width?: string
@@ -73,6 +74,7 @@
     | 'book'
     | 'table'
     | 'plane'
+    | 'planner'
   }
 
   const {
@@ -118,4 +120,5 @@
   <BookIcon v-else-if="variant === 'book'" :width :height />
   <TableIcon v-else-if="variant === 'table'" :width :height />
   <PlaneIcon v-else-if="variant === 'plane'" :width :height />
+  <PlannerIcon v-else-if="variant === 'planner'" :width :height />
 </template>
