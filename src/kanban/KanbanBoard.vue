@@ -176,7 +176,7 @@ import CandidateEmailTemplate from './components/CandidateEmailTemplate.vue'
     <KanbanHeader />
     <!-- <KanbanCandidateDetailModal /> -->
     <KanbanCandidateCVViewer />
-    <CandidateEmailTemplate />
+    <!-- <CandidateEmailTemplate /> -->
 
     <main class="w-full flex flex-1 overflow-x-auto p-2 gap-2 relative bg-[#f1f2f4]">
       <div id="kanbanBoard" class="kanban-board flex h-full gap-2">
@@ -288,18 +288,25 @@ import CandidateEmailTemplate from './components/CandidateEmailTemplate.vue'
   }
 
   .kanban .va-file-upload-list-item {
-    height: 48px;
-    box-shadow: none;
-    border-radius: 8px;
-    border: 1px solid #0b120e24;
-    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #f9fafb;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #4b5563;
+    box-shadow: inset 0 0 0 1px rgb(107 114 128 / 0.1);
   }
 
-  .kanban .va-file-upload-list-item__name,
-  .kanban .va-file-upload-list-item__size {
+  .kanban .va-file-upload-list-item__name {
     color: #505258;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .kanban .va-file-upload-list-item__size {
+    display: none;
   }
 
   .kanban-drag-shadow {
