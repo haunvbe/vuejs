@@ -31,20 +31,22 @@ import CandidateCommentSection from './CandidateCommentSection.vue'
 
   const source = ref<any>([{ id: 1, name: 'Website' }, { id: 2, name: 'Top CV' }, { id: 3, name: 'Mobile' }])
 
-  function tabHome() {
-    setTab(state.value.constants?.TAB_HOME)
-  }
+  function getInitials(name: string) {
+    if (!name || typeof name !== "string") return "";
 
-  function tabApplicationForm() {
-    setTab(state.value.constants?.TAB_APPLICATION_FORM)
-  }
+    // Remove extra spaces and split words
+    const words = name.trim().split(/\s+/);
 
-  function tabEvaluation() {
-    setTab(state.value.constants?.TAB_EVALUATION)
-  }
+    if (words.length === 1) {
+      // Single word → take first 2 letters
+      return words[0].slice(0, 2).toUpperCase();
+    }
 
-  function tabActivityLog() {
-    setTab(state.value.constants?.TAB_ACTIVITY_LOG)
+    // Take first letter of first and last word
+    const first = words[0][0];
+    const last = words[words.length - 1][0];
+
+    return (first + last).toUpperCase();
   }
 </script>
 
@@ -71,780 +73,457 @@ import CandidateCommentSection from './CandidateCommentSection.vue'
         </div>
       </header>
 
-      <main class="w-full flex max-h-[668px] pr-1 pl-4 py-4">
-        <div class="kanban-aside w-[220px] py-2">
-          <div class="leading-[40px] h-[40px] relative text-sm text-[#505258] font-semibold mb-2">
-            Chi tiết ứng viên
+      <main class="w-full flex max-h-[668px] kanban-scroll pr-1 pl-4 py-4">
+         <div class="w-[254px]">
+            <div class="flex items-center gap-2">
+              <div class="w-[40px] h-[40px] rounded-full bg-[#e6f1fb] text-[#0c447c] text-center leading-[40px] text-sm font-semibold">
+                {{ getInitials('Nguyễn Văn Hậu') }}
+              </div>
 
-            <Button
-              size="w-[24px] h-[24px]"
-              bg-color="bg-[#0515240f]"
-              color="text-[#505258]"
-              hover="hover:bg-[#0b120e24]"
-              shadow=""
-              class="absolute top-[8px] -right-[12px]"
-              rounded="rounded-full"
-              @mouseenter="showTooltip($event, 'Thu gọn bảng điều hướng')"
-              @mouseleave="hideTooltip"
-              >
-              <Icon width="14" height="14" variant="angle-right" />
-            </Button>
-          </div>
+              <div class="flex-1">
+                <div class="text-sm text-[#292a2e] font-semibold">
+                  Nguyễn Văn Hậu
+                </div>
 
-          <ul>
-            <li>
-              <Button
-                size="w-full px-4 h-[36px]"
-                align="items-center"
-                shadow=""
-                color=""
-                bg-color=""
-                hover=""
-                transition=""
-                :class="generateClassNames(state.constants?.TAB_HOME)"
-                @click="tabHome"
-              >
-                <Icon variant="home" width="14" height="14" />
-
-                Home
-              </Button>
-            </li>
-
-            <li>
-              <Button
-                size="w-full px-4 h-[36px]"
-                align="items-center"
-                shadow=""
-                color=""
-                bg-color=""
-                hover=""
-                transition=""
-                :class="generateClassNames(state.constants?.TAB_APPLICATION_FORM)"
-                @click="tabApplicationForm"
-              >
-                <Icon variant="geist" width="14" height="14" />
-
-                Đơn ứng tuyển
-              </Button>
-            </li>
-
-            <li>
-              <Button
-                size="w-full px-4 h-[36px]"
-                align="items-center"
-                shadow=""
-                color=""
-                bg-color=""
-                hover=""
-                transition=""
-                :class="generateClassNames(state.constants?.TAB_EVALUATION)"
-                @click="tabEvaluation"
-              >
-                <Icon variant="circle-question" width="14" height="14" />
-
-                Kiểm tra & Phỏng vấn
-              </Button>
-            </li>
-
-            <li>
-              <Button
-                size="w-full px-4 h-[36px]"
-                align="items-center"
-                shadow=""
-                color=""
-                bg-color=""
-                hover=""
-                transition=""
-                :class="generateClassNames(state.constants?.TAB_ACTIVITY_LOG)"
-                @click="tabActivityLog"
-              >
-                <Icon variant="activity" width="14" height="14" />
-
-                Nhật ký hoạt động
-              </Button>
-            </li>
-
-            <div class="py-1 mb-2">
-              <div class="h-[1px] bg-[#0b120e24]"></div>
+                <div class="text-xs text-[#505258] font-medium">
+                  Senior Software Engineer
+                </div>
+              </div>
             </div>
 
-            <li>
-              <Button
-                size="w-full px-4 h-[36px]"
-                color="text-[#505258]"
-                bg-color="transparent"
-                hover="hover:bg-[#0b120e24]"
-                class="mb-2 gap-3"
-                shadow=""
-                align="items-center"
-              >
-                <Icon variant="automation" width="14" height="14" />
+            <div class="w-full h-[1px] bg-[#0b120e24] my-4"></div>
 
-                Hành động
+            <div class="mb-4">
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Thông tin liên hệ
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="phone" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  {{ user.phone }}
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="envelope" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  {{ user.email }}
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="clock" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  <span class="text-[#505258] font-medium me-1">
+                    Tạo hồ sơ:
+                  </span>
+
+                  {{ user.date }}
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-[#0b120e24] my-4"></div>
+
+            <div class="mb-4">
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Người phụ trách
+              </div>
+
+              <div class="flex gap-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="user-group" width="16" height="16" />
+                </Button>
+
+                <VaSelect
+                  v-model="value"
+                  class="flex-1 min-w-0 kanban-field--size-md kanban-badge--blue"
+                  content-class="kanban-select"
+                  value-by="id"
+                  text-by="name"
+                  multiple
+                  dropdown-icon=""
+                  :max-visible-options="2"
+                  :options="value"
+                >
+                  <template #appendInner>
+                    <Button
+                      size="w-[28px] h-[28px]"
+                      color="text-[#505258]"
+                      bg-color="transparent"
+                      hover=""
+                      shadow=""
+                    >
+                      <Icon variant="angle-down" width="12" height="12" />
+                    </Button>
+                  </template>
+
+                  <template #content="{ value }">
+                    <span
+                      v-for="v in value"
+                      :key="v.id"
+                      class="inline-flex items-center rounded-md bg-gray-50 px-2 py-0.5 text-xs font-medium text-[#505258] ring-1 ring-inset ring-gray-500/10 mr-2">
+                      {{ v.name }}
+                    </span>
+                  </template>
+                </VaSelect>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Nguồn tuyển dụng
+              </div>
+
+              <div class="flex gap-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="globe" width="16" height="16" />
+                </Button>
+
+                <VaSelect
+                  v-model="source"
+                  class="flex-1 min-w-0 kanban-field--size-md kanban-badge--blue"
+                  content-class="kanban-select"
+                  value-by="id"
+                  text-by="name"
+                  multiple
+                  dropdown-icon=""
+                  :max-visible-options="2"
+                  :options="source"
+                >
+                  <template #appendInner>
+                    <Button
+                      size="w-[28px] h-[28px]"
+                      color="text-[#505258]"
+                      bg-color="transparent"
+                      hover=""
+                      shadow=""
+                    >
+                      <Icon variant="angle-down" width="12" height="12" />
+                    </Button>
+                  </template>
+
+                  <template #content="{ value }">
+                    <span
+                      v-for="v in value"
+                      :key="v.id"
+                      class="inline-flex items-center rounded-md bg-gray-50 px-2 py-0.5 text-xs font-medium text-[#505258] ring-1 ring-inset ring-gray-500/10 mr-2">
+                      {{ v.name }}
+                    </span>
+                  </template>
+                </VaSelect>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Ngày ứng tuyển
+              </div>
+
+              <div class="flex gap-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="clock" width="16" height="16" />
+                </Button>
+
+                <VaDateInput
+                  v-model="user.date1"
+                  class="flex-1 min-w-0 text-xs kanban-field--size-md"
+                  content-class="kanban-date"
+                  manual-input
+                  icon=""
+                >
+                  <template #appendInner>
+                    <Button
+                      size="w-[28px] h-[28px]"
+                      color="text-[#505258]"
+                      bg-color="transparent"
+                      hover=""
+                      shadow=""
+                    >
+                      <Icon variant="angle-down" width="12" height="12" />
+                    </Button>
+                  </template>
+                </VaDateInput>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Ngày gửi offer
+              </div>
+
+              <div class="flex gap-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="clock" width="16" height="16" />
+                </Button>
+
+                <VaDateInput
+                  v-model="user.date1"
+                  class="flex-1 min-w-0 text-xs kanban-field--size-md"
+                  content-class="kanban-date"
+                  manual-input
+                  icon=""
+                >
+                  <template #appendInner>
+                    <Button
+                      size="w-[28px] h-[28px]"
+                      color="text-[#505258]"
+                      bg-color="transparent"
+                      hover=""
+                      shadow=""
+                    >
+                      <Icon variant="angle-down" width="12" height="12" />
+                    </Button>
+                  </template>
+                </VaDateInput>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Ngày nhận việc
+              </div>
+
+              <div class="flex gap-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="clock" width="16" height="16" />
+                </Button>
+
+                <VaDateInput
+                  v-model="user.date1"
+                  class="flex-1 min-w-0 text-xs kanban-field--size-md"
+                  content-class="kanban-date"
+                  icon=""
+                >
+                  <template #appendInner>
+                    <Button
+                      size="w-[28px] h-[28px]"
+                      color="text-[#505258]"
+                      bg-color="transparent"
+                      hover=""
+                      shadow=""
+                    >
+                      <Icon variant="copilot" width="16" height="16" />
+                    </Button>
+                  </template>
+                </VaDateInput>
+              </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-[#0b120e24] my-4"></div>
+
+            <div>
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Tin tuyển dụng
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="repo" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  {{ user.jobName }}
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="company" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  {{ user.department }}
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="company" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  {{ user.company }}
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 mb-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="clock" width="16" height="16" />
+                </Button>
+
+                <div class="flex-1 min-w-0 text-xs h-[28px] flex items-center font-semibold">
+                  {{ user.jobDated }}
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-[#0b120e24] my-4"></div>
+
+            <div class="mb-4">
+              <div class="text-sm text-[#292a2e] font-semibold mb-2">
+                Yêu cầu tuyển dụng
+              </div>
+
+              <div class="flex gap-2">
+                <Button
+                  size="w-[28px] h-[28px]"
+                  color="text-[#505258]"
+                  bg-color="transparent"
+                  hover=""
+                  shadow=""
+                >
+                  <Icon variant="table" width="16" height="16" />
+                </Button>
+
+                <VaSelect
+                  v-model="value"
+                  class="flex-1 min-w-0 kanban-field--size-md kanban-badge--blue"
+                  content-class="kanban-select"
+                  value-by="id"
+                  text-by="name"
+                  multiple
+                  dropdown-icon=""
+                  :max-visible-options="2"
+                  :options="value"
+                >
+                  <template #appendInner>
+                    <Button
+                      size="w-[28px] h-[28px]"
+                      color="text-[#505258]"
+                      bg-color="transparent"
+                      hover=""
+                      shadow=""
+                    >
+                      <Icon variant="angle-down" width="12" height="12" />
+                    </Button>
+                  </template>
+
+                  <template #content="{ value }">
+                    <span
+                      v-for="v in value"
+                      :key="v.id"
+                      class="inline-flex items-center rounded-md bg-gray-50 px-2 py-0.5 text-xs font-medium text-[#505258] ring-1 ring-inset ring-gray-500/10 mr-2">
+                      {{ v.name }}
+                    </span>
+                  </template>
+                </VaSelect>
+              </div>
+            </div>
+
+            <div class="flex justify-end my-5">
+              <Button
+                size="px-2 h-[28px]"
+                class="me-2"
+                font-size="text-xs"
+                >
+                <Icon variant="archive" width="12" height="12" />
+                Lưu
               </Button>
-            </li>
-          </ul>
-        </div>
+
+              <Button
+                size="px-2 h-[28px]"
+                bg-color="bg-[#dddee1]"
+                color="text-[#505258]"
+                hover="hover:bg-[#00000052]"
+                font-size="text-xs"
+              >
+                Đặt lại
+              </Button>
+            </div>
+          </div>
 
         <div class="flex-1">
           <div class="w-full h-full kanban-scroll">
-            <!-- <KanbanCandidateApplicationForm /> -->
-
             <div class="w-[96%] h-full py-2 mx-auto mb-4 flex">
               <div class="flex-1">
-                <nav class="flex px-4 gap-2">
-                  <Button
-                    size="px-2.5 h-[32px]"
-                    color="text-[#1868db]"
-                    bg-color="bg-[#e9f2fe]"
-                    hover="hover:bg-[#0b120e24]"
-                    class="relative"
-                    shadow=""
-                  >
-                    <Icon variant="book" width="16" height="16" />
 
-                    Tổng quan
-                    <span class="w-[12px] h-[2px] absolute bg-[#1868db] bottom-0"></span>
-                  </Button>
-
-                  <Button
-                    size="px-2.5 h-[32px]"
-                    color="text-[#505258]"
-                    bg-color="transparent"
-                    hover="hover:bg-[#0b120e24]"
-                    class="relative"
-                    shadow=""
-                  >
-                    <Icon variant="envelope" width="16" height="16" />
-
-                    Email
-                  </Button>
-
-                  <Button
-                    size="px-2.5 h-[32px]"
-                    color="text-[#505258]"
-                    bg-color="transparent"
-                    hover="hover:bg-[#0b120e24]"
-                    class="relative"
-                    shadow=""
-                  >
-                    <Icon variant="file" width="16" height="16" />
-
-                    Bài kiểm tra
-                  </Button>
-
-                  <Button
-                    size="px-2.5 h-[32px]"
-                    color="text-[#505258]"
-                    bg-color="transparent"
-                    hover="hover:bg-[#0b120e24]"
-                    class="relative"
-                    shadow=""
-                  >
-                    <Icon variant="activity" width="16" height="16" />
-
-                    Lịch sử  ứng tuyển
-                  </Button>
-                </nav>
-
-                <main class="w-[86%] p-4">
-                  <section class="my-5">
-                    <header class="flex mb-4">
-                      <Button
-                        size="h-[32px]"
-                        color="text-[#2a292e]"
-                        bg-color="transparent"
-                        hover=""
-                        shadow=""
-                      >
-                        <Icon variant="description" width="20" height="20" />
-
-                        Ghi chú
-                      </Button>
-
-                      <div class="flex flex-1 justify-end">
-                        <Button
-                          size="px-2 h-[32px]"
-                          color="text-[#292a2e]"
-                          bg-color="bg-[#0515240f]"
-                          hover="hover:bg-[#0b120e24]"
-                        >
-                          Chỉnh sửa
-                        </Button>
-                      </div>
-                    </header>
-
-                    <div class="mb-4">
-                      <Button
-                        v-if="!isDescription"
-                        size="w-full px-4 py-2 h-[60px]"
-                        color="text-[#6b6e76]"
-                        bg-color="transparent"
-                        font-weight="font-medium"
-                        hover="hover:bg-[#f9fafb] hover:border-[#d1d5db]"
-                        class="border border-[#e5e7eb] text-left"
-                        align=""
-                        shadow=""
-                        transition="transition-all"
-                        @click="isDescription = true"
-                      >
-                        Thêm ghi chú...
-                      </Button>
-
-                      <div v-if="isDescription">
-                        <VaTextarea
-                          v-model="user.description"
-                          class="kanban-textarea w-full mb-2"
-                          autocomplete="off"
-                          autofocus
-                          placeholder="Ghi chú chi tiết về ứng viên của bạn..."
-                        />
-                      </div>
-
-                      <div v-if="isDescription" class="flex gap-2">
-                        <Button
-                          size="px-2 h-[32px]"
-                        >
-                          <Icon variant="archive" width="14" height="14" />
-                          Lưu
-                        </Button>
-
-                        <Button
-                          size="px-4 h-[32px]"
-                          color="text-[#505258]"
-                          hover="hover:bg-[#0b120e24]"
-                          class="ms-2"
-                          bg-color=""
-                          shadow=""
-                          @click="() => isDescription = false"
-                        >
-                          Hủy
-                        </Button>
-                      </div>
-                    </div>
-                  </section>
-
-                  <CandidateCommentSection />
-
-                </main>
-              </div>
-
-              <div class="w-[254px]">
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Thông tin liên hệ
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="user" width="16" height="16" />
-                    </Button>
-
-                    <VaInput
-                      v-model="user.name"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                      readonly
-                    />
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="circle-info" width="16" height="16" />
-                    </Button>
-
-                    <VaInput
-                      v-model="user.phone"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                      readonly
-                    />
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="envelope" width="16" height="16" />
-                    </Button>
-
-                    <VaInput
-                      v-model="user.email"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                      readonly
-                    />
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="clock" width="16" height="16" />
-                    </Button>
-
-
-                    <div class="flex-1 min-w-0">
-                      <VaInput
-                        v-model="user.date"
-                        class="text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                        readonly
-                      />
-
-                      <div class="text-xs text-[#505258] font-medium mt-1">
-                        Thời gian tạo hồ  của ứng viên.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Người phụ trách
-                  </div>
-
-                  <div class="flex gap-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="user-group" width="16" height="16" />
-                    </Button>
-
-                    <VaSelect
-                      v-model="value"
-                      class="flex-1 min-w-0 kanban-field--size-md kanban-badge--blue"
-                      content-class="kanban-select"
-                      value-by="id"
-                      text-by="name"
-                      multiple
-                      dropdown-icon=""
-                      :max-visible-options="2"
-                      :options="value"
-                    >
-                      <template #appendInner>
-                        <Button
-                          size="w-[28px] h-[28px]"
-                          color="text-[#505258]"
-                          bg-color="transparent"
-                          hover=""
-                          shadow=""
-                        >
-                          <Icon variant="angle-down" width="12" height="12" />
-                        </Button>
-                      </template>
-
-                      <template #content="{ value }">
-                        <span
-                          v-for="v in value"
-                          :key="v.id"
-                          class="inline-flex items-center rounded-md bg-gray-50 px-2 py-0.5 text-xs font-medium text-[#505258] ring-1 ring-inset ring-gray-500/10 mr-2">
-                          {{ v.name }}
-                        </span>
-                      </template>
-                    </VaSelect>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Nguồn tuyển dụng
-                  </div>
-
-                  <div class="flex gap-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="globe" width="16" height="16" />
-                    </Button>
-
-                    <VaSelect
-                      v-model="source"
-                      class="flex-1 min-w-0 kanban-field--size-md kanban-badge--blue"
-                      content-class="kanban-select"
-                      value-by="id"
-                      text-by="name"
-                      multiple
-                      dropdown-icon=""
-                      :max-visible-options="2"
-                      :options="source"
-                    >
-                      <template #appendInner>
-                        <Button
-                          size="w-[28px] h-[28px]"
-                          color="text-[#505258]"
-                          bg-color="transparent"
-                          hover=""
-                          shadow=""
-                        >
-                          <Icon variant="angle-down" width="12" height="12" />
-                        </Button>
-                      </template>
-
-                      <template #content="{ value }">
-                        <span
-                          v-for="v in value"
-                          :key="v.id"
-                          class="inline-flex items-center rounded-md bg-gray-50 px-2 py-0.5 text-xs font-medium text-[#505258] ring-1 ring-inset ring-gray-500/10 mr-2">
-                          {{ v.name }}
-                        </span>
-                      </template>
-                    </VaSelect>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Ngày ứng tuyển
-                  </div>
-
-                  <div class="flex gap-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="clock" width="16" height="16" />
-                    </Button>
-
-                    <VaDateInput
-                      v-model="user.date1"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-md"
-                      content-class="kanban-date"
-                      manual-input
-                      icon=""
-                    >
-                      <template #appendInner>
-                        <Button
-                          size="w-[28px] h-[28px]"
-                          color="text-[#505258]"
-                          bg-color="transparent"
-                          hover=""
-                          shadow=""
-                        >
-                          <Icon variant="angle-down" width="12" height="12" />
-                        </Button>
-                      </template>
-                    </VaDateInput>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Ngày gửi offer
-                  </div>
-
-                  <div class="flex gap-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="clock" width="16" height="16" />
-                    </Button>
-
-                    <VaDateInput
-                      v-model="user.date1"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-md"
-                      content-class="kanban-date"
-                      manual-input
-                      icon=""
-                    >
-                      <template #appendInner>
-                        <Button
-                          size="w-[28px] h-[28px]"
-                          color="text-[#505258]"
-                          bg-color="transparent"
-                          hover=""
-                          shadow=""
-                        >
-                          <Icon variant="angle-down" width="12" height="12" />
-                        </Button>
-                      </template>
-                    </VaDateInput>
-                  </div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Ngày nhận việc
-                  </div>
-
-                  <div class="flex gap-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="clock" width="16" height="16" />
-                    </Button>
-
-                    <VaDateInput
-                      v-model="user.date1"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-md"
-                      content-class="kanban-date"
-                      manual-input
-                      icon=""
-                    >
-                      <template #appendInner>
-                        <Button
-                          size="w-[28px] h-[28px]"
-                          color="text-[#505258]"
-                          bg-color="transparent"
-                          hover=""
-                          shadow=""
-                        >
-                          <Icon variant="angle-down" width="12" height="12" />
-                        </Button>
-                      </template>
-                    </VaDateInput>
-                  </div>
-                </div>
-
-                <div class="my-5">
-                  <div class="w-full h-[1px] bg-[#0b120e24]"></div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Tin tuyển dụng
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="repo" width="16" height="16" />
-                    </Button>
-
-                    <VaInput
-                      v-model="user.jobName"
-                      class="flex-1 min-w-0 text-xs text-semibol kanban-field--size-xs pointer-events-none bg-gray-100"
-                      readonly
-                    />
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="company" width="16" height="16" />
-                    </Button>
-
-                    <VaInput
-                      v-model="user.department"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                      readonly
-                    />
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="company" width="16" height="16" />
-                    </Button>
-
-                    <VaInput
-                      v-model="user.company"
-                      class="flex-1 min-w-0 text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                      readonly
-                    />
-                  </div>
-
-                  <div class="flex gap-2 mb-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="clock" width="16" height="16" />
-                    </Button>
-
-                    <div class="flex-1 min-w-0">
-                      <VaInput
-                        v-model="user.jobDated"
-                        class="text-xs kanban-field--size-xs pointer-events-none bg-gray-100"
-                        readonly
-                      />
-
-                      <div class="text-xs text-[#505258] font-medium mt-1">
-                        Thời gian tuyển dụng bắt đầu và kết thúc từ ngày đến ngày.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="my-5">
-                  <div class="w-full h-[1px] bg-[#0b120e24]"></div>
-                </div>
-
-                <div class="mb-4">
-                  <div class="text-sm text-[#292a2e] font-semibold mb-2">
-                    Yêu cầu tuyển dụng
-                  </div>
-
-                  <div class="flex gap-2">
-                    <Button
-                      size="w-[28px] h-[28px]"
-                      color="text-[#505258]"
-                      bg-color="transparent"
-                      hover=""
-                      shadow=""
-                    >
-                      <Icon variant="table" width="16" height="16" />
-                    </Button>
-
-                    <VaSelect
-                      v-model="value"
-                      class="flex-1 min-w-0 kanban-field--size-md kanban-badge--blue"
-                      content-class="kanban-select"
-                      value-by="id"
-                      text-by="name"
-                      multiple
-                      dropdown-icon=""
-                      :max-visible-options="2"
-                      :options="value"
-                    >
-                      <template #appendInner>
-                        <Button
-                          size="w-[28px] h-[28px]"
-                          color="text-[#505258]"
-                          bg-color="transparent"
-                          hover=""
-                          shadow=""
-                        >
-                          <Icon variant="angle-down" width="12" height="12" />
-                        </Button>
-                      </template>
-
-                      <template #content="{ value }">
-                        <span
-                          v-for="v in value"
-                          :key="v.id"
-                          class="inline-flex items-center rounded-md bg-gray-50 px-2 py-0.5 text-xs font-medium text-[#505258] ring-1 ring-inset ring-gray-500/10 mr-2">
-                          {{ v.name }}
-                        </span>
-                      </template>
-                    </VaSelect>
-                  </div>
-                </div>
-
-                <div class="flex justify-end my-5">
-                  <Button
-                    size="px-2 h-[28px]"
-                    class="me-2"
-                    font-size="text-xs"
-                    >
-                    <Icon variant="archive" width="12" height="12" />
-                    Lưu
-                  </Button>
-
-                  <Button
-                    size="px-2 h-[28px]"
-                    bg-color="bg-[#dddee1]"
-                    color="text-[#505258]"
-                    hover="hover:bg-[#00000052]"
-                    font-size="text-xs"
-                  >
-                    Đặt lại
-                  </Button>
-                </div>
               </div>
             </div>
-
-            <!-- <KanbanBadgeListPopover /> -->
           </div>
-
         </div>
-
-        <!-- <div class="w-[40%]">
-          <div class="flex">
-            <Button
-              size="px-2.5 h-[32px]"
-              color="text-[#505258]"
-              bg-color="transparent"
-              hover="hover:bg-[#0b120e24]"
-              class="me-2"
-              shadow=""
-            >
-              <Icon variant="user" width="16" height="16" />
-
-              Thông tin
-            </Button>
-
-            <Button
-              size="px-2.5 h-[32px]"
-              color="text-[#505258]"
-              bg-color="transparent"
-              hover="hover:bg-[#0b120e24]"
-              class="me-2"
-              shadow=""
-            >
-              <Icon variant="comment" width="16" height="16" />
-
-              Bình luận
-            </Button>
-
-            <Button
-              size="px-2.5 h-[32px]"
-              color="text-[#1868db]"
-              bg-color="bg-[#e9f2fe]"
-              hover="hover:bg-[#0b120e24]"
-              class="me-2 relative"
-              shadow=""
-            >
-              <Icon variant="comment" width="16" height="16" />
-
-              Bình luận
-              <span class="w-[12px] h-[2px] absolute bg-[#1868db] bottom-0"></span>
-            </Button>
-          </div>
-        </div> -->
       </main>
     </div>
   </div>

@@ -35,6 +35,8 @@
   import TableIcon from './icons/TableIcon.vue'
   import PlaneIcon from './icons/PlaneIcon.vue'
   import PlannerIcon from './icons/PlannerIcon.vue'
+  import PhoneIcon from './icons/PhoneIcon.vue'
+import CopilotIcon from './icons/CopilotIcon.vue'
 
   type Icon = {
     width?: string
@@ -75,6 +77,8 @@
     | 'table'
     | 'plane'
     | 'planner'
+    | 'phone'
+    | 'copilot'
   }
 
   const {
@@ -121,4 +125,6 @@
   <TableIcon v-else-if="variant === 'table'" :width :height />
   <PlaneIcon v-else-if="variant === 'plane'" :width :height />
   <PlannerIcon v-else-if="variant === 'planner'" :width :height />
+  <PhoneIcon v-else-if="variant === 'phone'" :width :height />
+  <CopilotIcon v-else-if="variant === 'copilot'" :width :height />
 </template>

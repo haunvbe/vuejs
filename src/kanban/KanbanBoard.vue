@@ -174,7 +174,7 @@ import CandidateEmailTemplate from './components/CandidateEmailTemplate.vue'
     <KanbanCardMenuPopover />
     <KanbanCandidateForm />
     <KanbanHeader />
-    <!-- <KanbanCandidateDetailModal /> -->
+    <KanbanCandidateDetailModal />
     <KanbanCandidateCVViewer />
     <!-- <CandidateEmailTemplate /> -->
 
