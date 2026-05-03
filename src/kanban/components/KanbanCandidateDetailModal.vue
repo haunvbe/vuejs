@@ -76,17 +76,32 @@ import CandidateCommentSection from './CandidateCommentSection.vue'
       <main class="w-full flex max-h-[668px] kanban-scroll pr-1 pl-4 py-4">
          <div class="w-[254px]">
             <div class="flex items-center gap-2">
-              <div class="w-[40px] h-[40px] rounded-full bg-[#e6f1fb] text-[#0c447c] text-center leading-[40px] text-sm font-semibold">
+              <!-- <div class="w-[40px] h-[40px] rounded-full bg-[#e6f1fb] text-[#0c447c] text-center leading-[40px] text-sm font-semibold">
                 {{ getInitials('Nguyễn Văn Hậu') }}
-              </div>
+              </div> -->
 
-              <div class="flex-1">
+              <!-- <div class="flex-1">
                 <div class="text-sm text-[#292a2e] font-semibold">
                   Nguyễn Văn Hậu
                 </div>
 
                 <div class="text-xs text-[#505258] font-medium">
                   Senior Software Engineer
+                </div>
+              </div> -->
+
+              <div class="w-[64px] h-[64px] rounded-[20px] bg-[#028cab] flex justify-center items-center">
+                <div class="w-[40px] h-[40px] rounded bg-white shadow-sm">
+                  <div class="relative">
+                    <div class="w-[9px] h-[9px] rounded-full bg-[#028cab] absolute top-1/2 left-1/2 -translate-x-[calc(100%+3px)] -translate-y-1/2"></div>
+                    <div class="w-[9px] h-[9px] rounded-full bg-[#028cab] absolute top-1/2 left-1/2 translate-x-[3px] -translate-y-1/2"></div>
+                  </div>
+
+                  <div class="mt-1 h-[36px] flex items-center justify-center">
+                    <div class="font-bold text-[#015c7c] text-[20px]">
+                      27
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
